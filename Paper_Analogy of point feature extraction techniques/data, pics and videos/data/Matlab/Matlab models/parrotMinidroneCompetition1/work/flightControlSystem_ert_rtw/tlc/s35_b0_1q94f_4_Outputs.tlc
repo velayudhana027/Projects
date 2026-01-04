@@ -1,0 +1,2126 @@
+%implements s35_b0_1q94f_4_Outputs "C"
+
+%function Outputs(block, system) Output
+%<SLibCGIRAccessLocalVar(45, 0, "")> %% mq4hpbessa
+%<SLibCGIRAccessLocalVar(169, 0, "")> %% ciwmkmz0hy
+%<SLibCGIRAccessLocalVar(49, 0, "")> %% auadf3z5rl
+%<SLibCGIRAccessLocalVar(170, 0, "")> %% hk55w50pro
+%<SLibCGIRAccessLocalVar(187, 0, "")> %% fxb4stm2ms
+%<SLibCGIRAccessLocalVar(80, 0, "")> %% c4pr3d2xvj
+%<SLibCGIRAccessLocalVar(84, 0, "")> %% kpxdy2hldb
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real32_T d3uu2vuvm3_tmp;
+real32_T d3uu2vuvm3_tmp_p;
+boolean_T byuube5zvh;
+boolean_T d4hayi4src;
+%closefile localVarDecl
+%assign _modelSS = ""
+
+%if SLibCG_FcnCallArgAccessed(4,4,5,0)
+%<SLibCG_AccessArg(4 ,4, 4)>
+%endif
+%if SLibCG_FcnCallArgAccessed(4,4,5,1)
+%<SLibCG_AccessArg(4 ,4, 6)>
+%endif
+%if SLibCG_FcnCallArgAccessed(4,4,5,2)
+%<SLibCG_AccessArg(4 ,4, 0)>
+%endif
+
+%if SLibCG_FcnCallArgAccessed(4,4,4,0)
+%<SLibCG_AccessArg(4 ,4, 4)>
+%endif
+%if SLibCG_FcnCallArgAccessed(4,4,4,1)
+%<SLibCG_AccessArg(4 ,4, 6)>
+%endif
+%if SLibCG_FcnCallArgAccessed(4,4,4,2)
+%<SLibCG_AccessArg(4 ,4, 0)>
+%endif
+
+%if SLibCG_FcnCallArgAccessed(4,4,3,0)
+%<SLibCG_AccessArg(4 ,4, 4)>
+%endif
+%if SLibCG_FcnCallArgAccessed(4,4,3,1)
+%<SLibCG_AccessArg(4 ,4, 6)>
+%endif
+%if SLibCG_FcnCallArgAccessed(4,4,3,2)
+%<SLibCG_AccessArg(4 ,4, 0)>
+%endif
+
+%if SLibCG_FcnCallArgAccessed(4,4,2,0)
+%<SLibCG_AccessArg(4 ,4, 4)>
+%endif
+%if SLibCG_FcnCallArgAccessed(4,4,2,1)
+%<SLibCG_AccessArg(4 ,4, 6)>
+%endif
+%if SLibCG_FcnCallArgAccessed(4,4,2,2)
+%<SLibCG_AccessArg(4 ,4, 0)>
+%endif
+
+%if SLibCG_FcnCallArgAccessed(4,4,1,0)
+%<SLibCG_AccessArg(4 ,4, 4)>
+%endif
+%if SLibCG_FcnCallArgAccessed(4,4,1,1)
+%<SLibCG_AccessArg(4 ,4, 6)>
+%endif
+%if SLibCG_FcnCallArgAccessed(4,4,1,2)
+%<SLibCG_AccessArg(4 ,4, 0)>
+%endif
+
+%if SLibCG_FcnCallArgAccessed(4,4,0,0)
+%<SLibCG_AccessArg(4 ,4, 4)>
+%endif
+%if SLibCG_FcnCallArgAccessed(4,4,0,1)
+%<SLibCG_AccessArg(4 ,4, 6)>
+%endif
+%if SLibCG_FcnCallArgAccessed(4,4,0,2)
+%<SLibCG_AccessArg(4 ,4, 0)>
+%endif
+
+%assign tlcOutputsFcnOfS25B44 = OpaqueTLCBlockFcn("Outputs", 25, 44, 4, 4, 0)
+%<SLibGenerateExtModeOutput(system)>
+/* {S!d214}DiscreteIntegrator: '<S421>/SimplyIntegrateVelocity' incorporates:
+ *  Constant: '<S1>/controlModePosVsOrient'
+ */
+if (localP->controlModePosVsOrient_Value && (localDW->nvlnzfl5aj <= 0)) {
+    localDW->jkzxf325k4[0] = localP->SimplyIntegrateVelocity_IC;
+    localDW->jkzxf325k4[1] = localP->SimplyIntegrateVelocity_IC;
+}
+/* {S!d216}DiscreteIntegrator: '<S421>/SimplyIntegrateVelocity' */
+localB->am53zdlbzw[0] = localDW->jkzxf325k4[0];
+localB->am53zdlbzw[1] = localDW->jkzxf325k4[1];
+/* {S!d218}RelationalOperator: '<S242>/Compare' incorporates:
+ *  Constant: '<S242>/Constant'
+ *  Delay: '<S235>/Delay2'
+ */
+localB->llusgyamke = (localDW->hf525y4flm > localP->outlierBelowFloor_const);
+/* {S!d220}Delay: '<S239>/MemoryX' incorporates:
+ *  Constant: '<S239>/X0'
+ *  DataTypeConversion: '<S239>/DataTypeConversionReset'
+ *  Reshape: '<S239>/ReshapeX0'
+ */
+localDW->p21jfteabq = (localB->llusgyamke || localDW->p21jfteabq);
+if (localDW->p21jfteabq) {
+    localDW->glnxqugnfv[0] = localP->X0_Value[0];
+    localDW->glnxqugnfv[1] = localP->X0_Value[1];
+}
+/* {S!d222}Gain: '<S235>/invertzaxisGain' */
+localB->des2f4zu3n = (real_T)localP->invertzaxisGain_Gain * dpqnxx3lex->HALSensors.HAL_ultrasound_SI.altitude;
+/* {S!d224}DiscreteFilter: '<S240>/pressureFilter_IIR' incorporates:
+ *  DataTypeConversion: '<S237>/Data Type Conversion'
+ *  Gain: '<S235>/prsToAltGain'
+ *  Sum: '<S237>/Sum2'
+ */
+localB->ec1ck2awjx = ((((dpqnxx3lex->HALSensors.HAL_pressure_SI.pressure - dpqnxx3lex->SensorCalibration[6]) * localP->prsToAltGain_Gain - localDW->bdtll520oe[0] * localP->pressureFilter_IIR_DenCoef[1]) - localDW->bdtll520oe[1] * localP->pressureFilter_IIR_DenCoef[2]) - localDW->bdtll520oe[2] * localP->pressureFilter_IIR_DenCoef[3]) / localP->pressureFilter_IIR_DenCoef[0];
+localB->numAccum = ((localP->pressureFilter_IIR_NumCoef[0] * localB->ec1ck2awjx + localDW->bdtll520oe[0] * localP->pressureFilter_IIR_NumCoef[1]) + localDW->bdtll520oe[1] * localP->pressureFilter_IIR_NumCoef[2]) + localDW->bdtll520oe[2] * localP->pressureFilter_IIR_NumCoef[3];
+/* {S!d226}DiscreteFilter: '<S240>/sonarFilter_IIR' */
+localB->h1qcjoemma = (((localB->des2f4zu3n - localDW->n4c02ccmvw[0] * localP->sonarFilter_IIR_DenCoef[1]) - localDW->n4c02ccmvw[1] * localP->sonarFilter_IIR_DenCoef[2]) - localDW->n4c02ccmvw[2] * localP->sonarFilter_IIR_DenCoef[3]) / localP->sonarFilter_IIR_DenCoef[0];
+/* {S!d228}Saturate: '<S240>/SaturationSonar' */
+if (localB->des2f4zu3n > -dexojrsdjj.Sensors.altSensorMin) {
+    localB->unnamed_idx_0 = -dexojrsdjj.Sensors.altSensorMin;
+} else if (localB->des2f4zu3n < localP->SaturationSonar_LowerSat) {
+    localB->unnamed_idx_0 = localP->SaturationSonar_LowerSat;
+} else {
+    localB->unnamed_idx_0 = localB->des2f4zu3n;
+}
+/* {E!d228}End of Saturate: '<S240>/SaturationSonar' */
+
+/* {S!d230}Logic: '<S240>/nicemeasurementor newupdateneeded' incorporates:
+ *  Abs: '<S240>/Absestdiff'
+ *  Abs: '<S240>/Absestdiff1'
+ *  Abs: '<S240>/Absestdiff2'
+ *  Constant: '<S294>/Constant'
+ *  Constant: '<S295>/Constant'
+ *  Constant: '<S296>/Constant'
+ *  Constant: '<S297>/Constant'
+ *  Delay: '<S235>/Delay2'
+ *  DiscreteFilter: '<S240>/pressureFilter_IIR'
+ *  DiscreteFilter: '<S240>/sonarFilter_IIR'
+ *  Logic: '<S240>/NOT'
+ *  Logic: '<S240>/findingoutliers'
+ *  Logic: '<S240>/newupdateneeded'
+ *  RelationalOperator: '<S294>/Compare'
+ *  RelationalOperator: '<S295>/Compare'
+ *  RelationalOperator: '<S296>/Compare'
+ *  RelationalOperator: '<S297>/Compare'
+ *  Sum: '<S240>/Add'
+ *  Sum: '<S240>/Add1'
+ *  Sum: '<S240>/Add2'
+ */
+localB->bdph3bzr40 = ((fabs(localDW->hf525y4flm - localB->unnamed_idx_0) <= localP->outlierJump_const) && (localB->des2f4zu3n < -dexojrsdjj.Sensors.altSensorMin) && ((!(fabs(localB->numAccum - localDW->hf525y4flm) >= localP->currentEstimateVeryOffFromPressure_const)) || (!(fabs((((localP->sonarFilter_IIR_NumCoef[0] * localB->h1qcjoemma + localDW->n4c02ccmvw[0] * localP->sonarFilter_IIR_NumCoef[1]) + localDW->n4c02ccmvw[1] * localP->sonarFilter_IIR_NumCoef[2]) + localDW->n4c02ccmvw[2] * localP->sonarFilter_IIR_NumCoef[3]) - localDW->hf525y4flm) >= localP->currentStateVeryOffsonarflt_const))));
+/* {S!d185}Outputs for Enabled SubSystem: '<S267>/Enabled Subsystem' incorporates:
+ *  EnablePort: '<S293>/Enable'
+ */
+/* {S!d238}DataTypeConversion: '<S239>/DataTypeConversionEnable' */
+if (localB->bdph3bzr40) {
+    localDW->bmsybdcoxe = true;
+    /* {S!d232}Sum: '<S293>/Add1' incorporates:
+ *  Constant: '<S239>/C'
+ *  Delay: '<S239>/MemoryX'
+ *  Product: '<S293>/Product'
+ *  Reshape: '<S239>/Reshapey'
+ */
+    localB->afiouwlyig_jwzvbuczlb = localB->des2f4zu3n - (localP->C_Value[0] * localDW->glnxqugnfv[0] + localP->C_Value[1] * localDW->glnxqugnfv[1]);
+    /* {S!d234}Product: '<S293>/Product2' incorporates:
+ *  Constant: '<S243>/KalmanGainM'
+ *  DataTypeConversion: '<S284>/Conversion'
+ */
+    localB->mplsyaumfh[0] = localP->KalmanGainM_Value[0] * localB->afiouwlyig_jwzvbuczlb;
+    localB->mplsyaumfh[1] = localP->KalmanGainM_Value[1] * localB->afiouwlyig_jwzvbuczlb;
+    srUpdateBC(localDW->ftvkipmcfj);
+} else if (localDW->bmsybdcoxe) {
+    /* {S!d236}Disable for Product: '<S293>/Product2' incorporates:
+ *  Outport: '<S293>/deltax'
+ */
+    localB->mplsyaumfh[0] = localP->deltax_Y0;
+    localB->mplsyaumfh[1] = localP->deltax_Y0;
+    localDW->bmsybdcoxe = false;
+}
+/* {E!d185}End of Outputs for SubSystem: '<S267>/Enabled Subsystem' */
+
+/* {S!d240}Reshape: '<S239>/Reshapexhat' incorporates:
+ *  Delay: '<S239>/MemoryX'
+ *  Sum: '<S267>/Add'
+ */
+localDW->hf525y4flm = localB->mplsyaumfh[0] + localDW->glnxqugnfv[0];
+/* {S!d242}Sum: '<S267>/Add' incorporates:
+ *  Delay: '<S239>/MemoryX'
+ */
+localB->afiouwlyig_jwzvbuczlb = localB->mplsyaumfh[1] + localDW->glnxqugnfv[1];
+/* {S!d244}DataTypeConversion: '<S235>/Data Type Conversion' incorporates:
+ *  Reshape: '<S239>/Reshapexhat'
+ */
+localB->dnazwsvmne = (real32_T)localDW->hf525y4flm;
+/* {S!d246}Delay: '<S305>/MemoryX' incorporates:
+ *  Constant: '<S305>/X0'
+ *  Reshape: '<S305>/ReshapeX0'
+ */
+if (localDW->jjttlxirju) {
+    localDW->nyjef1ycyg[0] = localP->X0_Value_iebopo3rxe[0];
+    localDW->nyjef1ycyg[1] = localP->X0_Value_iebopo3rxe[1];
+}
+/* {S!d248}Delay: '<S305>/MemoryX' */
+localB->asizdnypab_lxo5edjg3c[0] = localDW->nyjef1ycyg[0];
+localB->asizdnypab_lxo5edjg3c[1] = localDW->nyjef1ycyg[1];
+/* {S!d250}Bias: '<S237>/Assuming that the  preflight calibration was done at level orientation' incorporates:
+ *  DataTypeConversion: '<S237>/Data Type Conversion'
+ */
+for (localB->i = 0; localB->i < 6; localB->i++) {
+    localB->l0efof3lay_g2mlkqadfk[localB->i] = dpqnxx3lex->SensorCalibration[localB->i] + localP->Assumingthatthepreflightcalibrationwasdoneatlevelorientation_Bi[localB->i];
+}
+/* {E!d250}End of Bias: '<S237>/Assuming that the  preflight calibration was done at level orientation' */
+
+/* {S!d252}Gain: '<S237>/inverseIMU_gain' incorporates:
+ *  Sum: '<S237>/Sum1'
+ */
+localB->hjq3spfnkl[0] = (dpqnxx3lex->HALSensors.HAL_acc_SI.x - localB->l0efof3lay_g2mlkqadfk[0]) * localP->inverseIMU_gain_Gain[0];
+localB->hjq3spfnkl[1] = (dpqnxx3lex->HALSensors.HAL_acc_SI.y - localB->l0efof3lay_g2mlkqadfk[1]) * localP->inverseIMU_gain_Gain[1];
+localB->hjq3spfnkl[2] = (dpqnxx3lex->HALSensors.HAL_acc_SI.z - localB->l0efof3lay_g2mlkqadfk[2]) * localP->inverseIMU_gain_Gain[2];
+localB->hjq3spfnkl[3] = (dpqnxx3lex->HALSensors.HAL_gyro_SI.x - localB->l0efof3lay_g2mlkqadfk[3]) * localP->inverseIMU_gain_Gain[3];
+localB->hjq3spfnkl[4] = (dpqnxx3lex->HALSensors.HAL_gyro_SI.y - localB->l0efof3lay_g2mlkqadfk[4]) * localP->inverseIMU_gain_Gain[4];
+localB->hjq3spfnkl[5] = (dpqnxx3lex->HALSensors.HAL_gyro_SI.z - localB->l0efof3lay_g2mlkqadfk[5]) * localP->inverseIMU_gain_Gain[5];
+/* {S!d254}DiscreteFir: '<S237>/FIR_IMUaccel' */
+localB->acc1 = localB->hjq3spfnkl[0] * localP->FIR_IMUaccel_Coefficients[0];
+localB->i = 1;
+localB->j = localDW->iyk1p23sk3;
+while (localB->j < 5) {
+    localB->acc1 += localDW->g3y2exu1od[localB->j] * localP->FIR_IMUaccel_Coefficients[localB->i];
+    localB->i++;
+    localB->j++;
+}
+localB->j = 0;
+while (localB->j < localDW->iyk1p23sk3) {
+    localB->acc1 += localDW->g3y2exu1od[localB->j] * localP->FIR_IMUaccel_Coefficients[localB->i];
+    localB->i++;
+    localB->j++;
+}
+localB->k31ssxc4ec_nz4o0shxby[0] = localB->acc1;
+localB->acc1 = localP->FIR_IMUaccel_Coefficients[0] * localB->hjq3spfnkl[1];
+localB->i = 1;
+localB->j = localDW->iyk1p23sk3;
+while (localB->j < 5) {
+    localB->acc1 += localDW->g3y2exu1od[localB->j + 5] * localP->FIR_IMUaccel_Coefficients[localB->i];
+    localB->i++;
+    localB->j++;
+}
+localB->j = 0;
+while (localB->j < localDW->iyk1p23sk3) {
+    localB->acc1 += localDW->g3y2exu1od[localB->j + 5] * localP->FIR_IMUaccel_Coefficients[localB->i];
+    localB->i++;
+    localB->j++;
+}
+localB->k31ssxc4ec_nz4o0shxby[1] = localB->acc1;
+localB->acc1 = localP->FIR_IMUaccel_Coefficients[0] * localB->hjq3spfnkl[2];
+localB->i = 1;
+localB->j = localDW->iyk1p23sk3;
+while (localB->j < 5) {
+    localB->acc1 += localDW->g3y2exu1od[localB->j + 10] * localP->FIR_IMUaccel_Coefficients[localB->i];
+    localB->i++;
+    localB->j++;
+}
+localB->j = 0;
+while (localB->j < localDW->iyk1p23sk3) {
+    localB->acc1 += localDW->g3y2exu1od[localB->j + 10] * localP->FIR_IMUaccel_Coefficients[localB->i];
+    localB->i++;
+    localB->j++;
+}
+localB->k31ssxc4ec_nz4o0shxby[2] = localB->acc1;
+/* {S!d256}Gain: '<S301>/Gain2' */
+localB->grmb2sj2e5_idx_0 = localP->Gain2_Gain * localB->k31ssxc4ec_nz4o0shxby[0];
+/* {S!d258}Trigonometry: '<S301>/Trigonometric Function1' */
+if (localB->grmb2sj2e5_idx_0 > 1.0F) {
+    localB->grmb2sj2e5_idx_0 = 1.0F;
+} else if (localB->grmb2sj2e5_idx_0 < -1.0F) {
+    localB->grmb2sj2e5_idx_0 = -1.0F;
+}
+/* {S!d260}Trigonometry: '<S301>/Trigonometric Function1' */
+localB->pybvy2uarv = (real32_T)asin(localB->grmb2sj2e5_idx_0);
+/* {S!d262}Reshape: '<S305>/Reshapey' */
+mq4hpbessa = localB->pybvy2uarv;
+/* {S!d264}Math: '<S304>/Math Function' incorporates:
+ *  Constant: '<S304>/Constant'
+ *  DataTypeConversion: '<S304>/Data Type Conversion2'
+ *  DiscreteFir: '<S237>/FIR_IMUaccel'
+ */
+localB->d3uu2vuvm3_tmp = (real32_T)floor(localP->Constant_Value_h3rrj2jx2k);
+if ((localB->k31ssxc4ec_nz4o0shxby[0] < 0.0F) && (localP->Constant_Value_h3rrj2jx2k > localB->d3uu2vuvm3_tmp)) {
+    localB->g0v50l3nug = -%<(SLibCGCallSubFcn("rt_powf_snf", ["-localB->k31ssxc4ec_nz4o0shxby[0]", "localP->Constant_Value_h3rrj2jx2k", "%<::tSimStruct>"], 4, 4, 3))>;
+} else {
+    localB->g0v50l3nug = %<(SLibCGCallSubFcn("rt_powf_snf", ["localB->k31ssxc4ec_nz4o0shxby[0]", "localP->Constant_Value_h3rrj2jx2k", "%<::tSimStruct>"], 4, 4, 0))>;
+}
+if ((localB->k31ssxc4ec_nz4o0shxby[1] < 0.0F) && (localP->Constant_Value_h3rrj2jx2k > localB->d3uu2vuvm3_tmp)) {
+    localB->d5ebcbqinr = -%<(SLibCGCallSubFcn("rt_powf_snf", ["-localB->k31ssxc4ec_nz4o0shxby[1]", "localP->Constant_Value_h3rrj2jx2k", "%<::tSimStruct>"], 4, 4, 4))>;
+} else {
+    localB->d5ebcbqinr = %<(SLibCGCallSubFcn("rt_powf_snf", ["localB->k31ssxc4ec_nz4o0shxby[1]", "localP->Constant_Value_h3rrj2jx2k", "%<::tSimStruct>"], 4, 4, 1))>;
+}
+if ((localB->acc1 < 0.0F) && (localP->Constant_Value_h3rrj2jx2k > localB->d3uu2vuvm3_tmp)) {
+    localB->leteup22ga = -%<(SLibCGCallSubFcn("rt_powf_snf", ["-localB->acc1", "localP->Constant_Value_h3rrj2jx2k", "%<::tSimStruct>"], 4, 4, 5))>;
+} else {
+    localB->leteup22ga = %<(SLibCGCallSubFcn("rt_powf_snf", ["localB->acc1", "localP->Constant_Value_h3rrj2jx2k", "%<::tSimStruct>"], 4, 4, 2))>;
+}
+/* {E!d264}End of Math: '<S304>/Math Function' */
+
+/* {S!d266}Sqrt: '<S304>/Sqrt' incorporates:
+ *  Sum: '<S304>/Sum of Elements'
+ */
+localB->grmb2sj2e5_idx_0 = (real32_T)sqrt((localB->g0v50l3nug + localB->d5ebcbqinr) + localB->leteup22ga);
+/* {S!d268}Logic: '<S236>/Logical Operator' incorporates:
+ *  Constant: '<S299>/Constant'
+ *  Constant: '<S300>/Constant'
+ *  RelationalOperator: '<S299>/Compare'
+ *  RelationalOperator: '<S300>/Compare'
+ */
+localB->jx4gh3lhfo = (int16_T)((localB->grmb2sj2e5_idx_0 > localP->CompareToConstant_const) && (localB->grmb2sj2e5_idx_0 < localP->CompareToConstant1_const));
+/* {S!d270}DataTypeConversion: '<S305>/DataTypeConversionEnable' */
+ciwmkmz0hy = (localB->jx4gh3lhfo != 0);
+/* {S!d272}DataTypeConversion: '<S349>/Conversion' incorporates:
+ *  Constant: '<S306>/KalmanGainM'
+ */
+localB->axiwjc4r1i_dypejvacrn[0] = (real32_T)localP->KalmanGainM_Value_lxsgu00dk3[0];
+localB->axiwjc4r1i_dypejvacrn[1] = (real32_T)localP->KalmanGainM_Value_lxsgu00dk3[1];
+/* {S!d187}Outputs for Enabled SubSystem: '<S332>/Enabled Subsystem' */
+/* {S!d274}Constant: '<S305>/C' */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[17], "Output",0)
+%if SLibCG_SystemFcnArgAccessed("auyrlkczqp",17,0)
+%<SLibCG_AccessArg(4 ,4, 0)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("auyrlkczqp",17,1)
+%<SLibCGIRAccessLocalVar(169, 0, "")> %% ciwmkmz0hy
+%endif
+%if SLibCG_SystemFcnArgAccessed("auyrlkczqp",17,2)
+%<SLibCG_AccessArg(4 ,4, 4)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("auyrlkczqp",17,3)
+%<SLibCG_AccessArg(4 ,4, 6)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("auyrlkczqp",17,4)
+%<SLibCGIRAccessLocalVar(45, 0, "")> %% mq4hpbessa
+%endif
+%if SLibCG_SystemFcnArgAccessed("auyrlkczqp",17,5)
+%<SLibCG_AccessArg(4 ,4, 4)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("auyrlkczqp",17,6)
+%<SLibCG_AccessArg(4 ,4, 4)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("auyrlkczqp",17,7)
+%<SLibCG_AccessArg(4 ,4, 5)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("auyrlkczqp",17,8)
+%<SLibCG_AccessArg(4 ,4, 6)>
+%endif
+
+%<SLibCGIRGenReusableSysCall("auyrlkczqp", ["%<::tSimStruct>", "ciwmkmz0hy", "localB->axiwjc4r1i_dypejvacrn", "localP->C_Value_hgmeyjklds", "mq4hpbessa", "localB->asizdnypab_lxo5edjg3c", "&localB->auyrlkczqpj", "&localDW->auyrlkczqpj", "&localP->auyrlkczqpj"], 17, 0, 6, 0, 6, 25)>\
+
+
+/* {E!d187}End of Outputs for SubSystem: '<S332>/Enabled Subsystem' */
+
+%endif
+/* {S!d276}Delay: '<S359>/MemoryX' incorporates:
+ *  Constant: '<S359>/X0'
+ *  Reshape: '<S359>/ReshapeX0'
+ */
+if (localDW->bofwvja4x2) {
+    localDW->igdo3uvfy5[0] = localP->X0_Value_iynsusju2g[0];
+    localDW->igdo3uvfy5[1] = localP->X0_Value_iynsusju2g[1];
+}
+/* {S!d278}Delay: '<S359>/MemoryX' */
+localB->es3lz5rywc_bjbgfqrolh[0] = localDW->igdo3uvfy5[0];
+localB->es3lz5rywc_bjbgfqrolh[1] = localDW->igdo3uvfy5[1];
+/* {S!d280}Trigonometry: '<S302>/Trigonometric Function' incorporates:
+ *  DiscreteFir: '<S237>/FIR_IMUaccel'
+ *  Product: '<S302>/Divide'
+ */
+localB->bu5z5o4mak = (real32_T)atan(localB->k31ssxc4ec_nz4o0shxby[1] / localB->acc1);
+/* {S!d282}Reshape: '<S359>/Reshapey' */
+auadf3z5rl = localB->bu5z5o4mak;
+/* {S!d284}DataTypeConversion: '<S359>/DataTypeConversionEnable' */
+hk55w50pro = (localB->jx4gh3lhfo != 0);
+/* {S!d286}DataTypeConversion: '<S403>/Conversion' incorporates:
+ *  Constant: '<S360>/KalmanGainM'
+ */
+localB->nyj5mz2fpc_owjr1h1vqy[0] = (real32_T)localP->KalmanGainM_Value_aebz5up2fh[0];
+localB->nyj5mz2fpc_owjr1h1vqy[1] = (real32_T)localP->KalmanGainM_Value_aebz5up2fh[1];
+/* {S!d189}Outputs for Enabled SubSystem: '<S386>/Enabled Subsystem' */
+/* {S!d288}Constant: '<S359>/C' */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[17], "Output",0)
+%if SLibCG_SystemFcnArgAccessed("auyrlkczqp",17,0)
+%<SLibCG_AccessArg(4 ,4, 0)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("auyrlkczqp",17,1)
+%<SLibCGIRAccessLocalVar(170, 0, "")> %% hk55w50pro
+%endif
+%if SLibCG_SystemFcnArgAccessed("auyrlkczqp",17,2)
+%<SLibCG_AccessArg(4 ,4, 4)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("auyrlkczqp",17,3)
+%<SLibCG_AccessArg(4 ,4, 6)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("auyrlkczqp",17,4)
+%<SLibCGIRAccessLocalVar(49, 0, "")> %% auadf3z5rl
+%endif
+%if SLibCG_SystemFcnArgAccessed("auyrlkczqp",17,5)
+%<SLibCG_AccessArg(4 ,4, 4)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("auyrlkczqp",17,6)
+%<SLibCG_AccessArg(4 ,4, 4)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("auyrlkczqp",17,7)
+%<SLibCG_AccessArg(4 ,4, 5)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("auyrlkczqp",17,8)
+%<SLibCG_AccessArg(4 ,4, 6)>
+%endif
+
+%<SLibCGIRGenReusableSysCall("auyrlkczqp", ["%<::tSimStruct>", "hk55w50pro", "localB->nyj5mz2fpc_owjr1h1vqy", "localP->C_Value_icp2nf4rsg", "auadf3z5rl", "localB->es3lz5rywc_bjbgfqrolh", "&localB->boxx2sxddf", "&localDW->boxx2sxddf", "&localP->boxx2sxddf"], 17, 1, 6, 0, 6, 25)>\
+
+
+/* {E!d189}End of Outputs for SubSystem: '<S386>/Enabled Subsystem' */
+
+%endif
+/* {S!d290}DataTypeConversion: '<S236>/Data Type Conversion3' incorporates:
+ *  DiscreteIntegrator: '<S303>/Discrete-Time Integrator'
+ *  Sum: '<S332>/Add'
+ *  Sum: '<S386>/Add'
+ */
+localB->fbukxwx20m[0] = localDW->pwshjzhr55;
+localB->fbukxwx20m[1] = localB->auyrlkczqpj.jr33ft2rwp[0] + localB->asizdnypab_lxo5edjg3c[0];
+localB->fbukxwx20m[2] = localB->boxx2sxddf.jr33ft2rwp[0] + localB->es3lz5rywc_bjbgfqrolh[0];
+/* {S!d292}DiscreteTransferFcn: '<S237>/LPF Fcutoff = 40Hz1' */
+localB->g0v50l3nug = (localB->hjq3spfnkl[3] - localP->LPFFcutoff40Hz1_DenCoef[1] * localDW->bxz11ul2qv) / localP->LPFFcutoff40Hz1_DenCoef[0];
+/* {S!d294}DiscreteTransferFcn: '<S237>/LPF Fcutoff = 40Hz1' */
+localB->kb55jy5iky = localP->LPFFcutoff40Hz1_NumCoef[0] * localB->g0v50l3nug + localP->LPFFcutoff40Hz1_NumCoef[1] * localDW->bxz11ul2qv;
+/* {S!d296}DiscreteTransferFcn: '<S237>/LPF Fcutoff = 40Hz' */
+localB->d5ebcbqinr = (localB->hjq3spfnkl[4] - localP->LPFFcutoff40Hz_DenCoef[1] * localDW->ah0gcg1hha) / localP->LPFFcutoff40Hz_DenCoef[0];
+/* {S!d298}DiscreteTransferFcn: '<S237>/LPF Fcutoff = 40Hz' */
+localB->di0vapflam = localP->LPFFcutoff40Hz_NumCoef[0] * localB->d5ebcbqinr + localP->LPFFcutoff40Hz_NumCoef[1] * localDW->ah0gcg1hha;
+/* {S!d300}DiscreteFilter: '<S237>/IIR_IMUgyro_r' */
+localB->denAccum = localB->hjq3spfnkl[5];
+localB->denIdx = 1;
+for (localB->j = 0; localB->j < 5; localB->j++) {
+    localB->denAccum -= localP->IIR_IMUgyro_r_DenCoef[localB->denIdx] * localDW->brphiodnrc[localB->j];
+    localB->denIdx++;
+}
+localB->leteup22ga = localB->denAccum / localP->IIR_IMUgyro_r_DenCoef[0];
+localB->denAccum = localP->IIR_IMUgyro_r_NumCoef[0] * localB->leteup22ga;
+localB->denIdx = 1;
+for (localB->j = 0; localB->j < 5; localB->j++) {
+    localB->denAccum += localP->IIR_IMUgyro_r_NumCoef[localB->denIdx] * localDW->brphiodnrc[localB->j];
+    localB->denIdx++;
+}
+/* {S!d302}RelationalOperator: '<S415>/Compare' incorporates:
+ *  Constant: '<S415>/Constant'
+ *  UnitDelay: '<S416>/Output'
+ */
+d4hayi4src = (localDW->e34yfyxvng == localP->CompareToConstant_const_ltbq4yopxw);
+/* {S!d191}Outputs for Triggered SubSystem: '<S413>/Triggered Subsystem' incorporates:
+ *  TriggerPort: '<S417>/Trigger'
+ */
+if (((localZCE->pymbyiayem == 1) != (int32_T)d4hayi4src) && (localZCE->pymbyiayem != 3)) {
+    /* {S!d304}Inport: '<S417>/In1' */
+    localB->pqvwq2atjn = dpqnxx3lex->HALSensors.HAL_gyro_SI.temperature;
+    localDW->m0i15tnngn = 4;
+}
+localZCE->pymbyiayem = d4hayi4src;
+/* {E!d191}End of Outputs for SubSystem: '<S413>/Triggered Subsystem' */
+
+/* {S!d306}ManualSwitch: '<S413>/Disable temperature compensation' incorporates:
+ *  Constant: '<S413>/Constant'
+ *  Gain: '<S413>/Gain'
+ *  Sum: '<S413>/Subtract'
+ */
+if (localP->Disabletemperaturecompensation_CurrentSetting == 1) {
+    localB->unnamed_idx_0 = (dpqnxx3lex->HALSensors.HAL_gyro_SI.temperature - localB->pqvwq2atjn) * localP->Gain_Gain_kw5wpt2a10;
+} else {
+    localB->unnamed_idx_0 = localP->Constant_Value;
+}
+/* {E!d306}End of ManualSwitch: '<S413>/Disable temperature compensation' */
+
+/* {S!d308}Sum: '<S413>/Subtract1' incorporates:
+ *  DataTypeConversion: '<S413>/Data Type Conversion1'
+ *  DiscreteFilter: '<S237>/IIR_IMUgyro_r'
+ */
+localB->hz25zcfjyj_bnlywzniup = localB->denAccum - (real32_T)localB->unnamed_idx_0;
+/* {S!d310}Sum: '<S236>/Subtract' incorporates:
+ *  Constant: '<S303>/Constant'
+ *  Sum: '<S332>/Add'
+ *  Sum: '<S386>/Add'
+ */
+localB->n0pnodhba1[0] = localB->kb55jy5iky - (localB->boxx2sxddf.jr33ft2rwp[1] + localB->es3lz5rywc_bjbgfqrolh[1]);
+localB->n0pnodhba1[1] = localB->di0vapflam - (localB->auyrlkczqpj.jr33ft2rwp[1] + localB->asizdnypab_lxo5edjg3c[1]);
+localB->n0pnodhba1[2] = localB->hz25zcfjyj_bnlywzniup - localP->Constant_Value_jwftkbz0rw;
+/* {S!d312}Delay: '<S425>/MemoryX' incorporates:
+ *  Constant: '<S425>/X0'
+ *  Reshape: '<S425>/ReshapeX0'
+ */
+if (localDW->kz35mo0sw4) {
+    localDW->coz3ppgkas[0] = localP->X0_Value_ckt0hlpura[0];
+    localDW->coz3ppgkas[1] = localP->X0_Value_ckt0hlpura[1];
+    localDW->coz3ppgkas[2] = localP->X0_Value_ckt0hlpura[2];
+    localDW->coz3ppgkas[3] = localP->X0_Value_ckt0hlpura[3];
+}
+/* {S!d316}Switch: '<S426>/Switch' incorporates:
+ *  Constant: '<S497>/Constant'
+ *  Gain: '<S426>/opticalFlowErrorCorrect'
+ *  Product: '<S426>/ '
+ *  RelationalOperator: '<S497>/Compare'
+ *  UnitDelay: '<S498>/Output'
+ */
+if (localDW->dqzlvsxig5 < localP->CompareToConstant_const_hl25wzzkec) {
+    localB->bnbpr1cmqp_ppxrqq0gsf[0] = dpqnxx3lex->VisionSensors.opticalFlow_data[0];
+    localB->bnbpr1cmqp_ppxrqq0gsf[1] = dpqnxx3lex->VisionSensors.opticalFlow_data[1];
+    localB->bnbpr1cmqp_ppxrqq0gsf[2] = dpqnxx3lex->VisionSensors.opticalFlow_data[2];
+} else {
+    /* {S!d314}Gain: '<S426>/Gain' */
+    localB->iqp3neo1wg_dapv3jlyq5 = localP->Gain_Gain_p3e2qyvrfr * localB->dnazwsvmne;
+    localB->bnbpr1cmqp_ppxrqq0gsf[0] = dpqnxx3lex->VisionSensors.opticalFlow_data[0] * localB->iqp3neo1wg_dapv3jlyq5 * localP->opticalFlowErrorCorrect_Gain;
+    localB->bnbpr1cmqp_ppxrqq0gsf[1] = dpqnxx3lex->VisionSensors.opticalFlow_data[1] * localB->iqp3neo1wg_dapv3jlyq5 * localP->opticalFlowErrorCorrect_Gain;
+    localB->bnbpr1cmqp_ppxrqq0gsf[2] = dpqnxx3lex->VisionSensors.opticalFlow_data[2] * localB->iqp3neo1wg_dapv3jlyq5 * localP->opticalFlowErrorCorrect_Gain;
+}
+/* {E!d316}End of Switch: '<S426>/Switch' */
+
+/* {S!d318}Abs: '<S423>/Abs' */
+localB->iqp3neo1wg_dapv3jlyq5 = (real32_T)fabs(localB->dnazwsvmne);
+/* {S!d320}DataTypeConversion: '<S423>/Data Type Conversion' incorporates:
+ *  Gain: '<S423>/Gain1'
+ *  Product: '<S423>/prod'
+ */
+localB->ch1fnv55xz_guugdwf2m3[0] = localB->iqp3neo1wg_dapv3jlyq5 * localB->n0pnodhba1[1] * localP->Gain1_Gain;
+localB->ch1fnv55xz_guugdwf2m3[1] = localB->iqp3neo1wg_dapv3jlyq5 * localB->n0pnodhba1[0];
+/* {S!d322}SignalConversion generated from: '<S424>/IIRgyroz' */
+localB->nco2wgzik0_ldqodwenvz[0] = localB->kb55jy5iky;
+localB->nco2wgzik0_ldqodwenvz[1] = localB->di0vapflam;
+for (localB->i = 0; localB->i < 2; localB->i++) {
+    /* {S!d324}Sum: '<S420>/angular velocity compensation' */
+    localB->iqp3neo1wg_dapv3jlyq5 = localB->bnbpr1cmqp_ppxrqq0gsf[localB->i];
+    /* {S!d326}Sum: '<S420>/angular velocity compensation' */
+    localB->cx3xemd1qz[localB->i] = localB->iqp3neo1wg_dapv3jlyq5 + localB->ch1fnv55xz_guugdwf2m3[localB->i];
+    /* {S!d328}DiscreteFilter: '<S424>/IIRgyroz' */
+    localB->memOffset = localB->i * 5;
+    localB->denAccum = localB->nco2wgzik0_ldqodwenvz[localB->i];
+    localB->denIdx = 1;
+    for (localB->j = 0; localB->j < 5; localB->j++) {
+        localB->denAccum -= localDW->dd2ozag2ww[localB->memOffset + localB->j] * localP->IIRgyroz_DenCoef[localB->denIdx];
+        localB->denIdx++;
+    }
+    localDW->lopel0ovxm[localB->i] = localB->denAccum / localP->IIRgyroz_DenCoef[0];
+    localB->denAccum = localP->IIRgyroz_NumCoef[0] * localDW->lopel0ovxm[localB->i];
+    localB->denIdx = 1;
+    for (localB->j = 0; localB->j < 5; localB->j++) {
+        localB->denAccum += localDW->dd2ozag2ww[localB->memOffset + localB->j] * localP->IIRgyroz_NumCoef[localB->denIdx];
+        localB->denIdx++;
+    }
+    /* {S!d330}SampleTimeMath: '<S432>/TSamp' incorporates:
+ *  DiscreteFilter: '<S424>/IIRgyroz'
+ *
+ * About '<S432>/TSamp':
+ *  y = u * K where K = 1 / ( w * Ts )
+ */
+    localB->denAccum *= localP->TSamp_WtEt;
+    /* {S!d332}Sum: '<S432>/Diff' incorporates:
+ *  UnitDelay: '<S432>/UD'
+ */
+    localDW->bwea4hxqvk[localB->i] = localB->denAccum - localDW->bwea4hxqvk[localB->i];
+    /* {S!d334}SampleTimeMath: '<S432>/TSamp'
+ *
+ * About '<S432>/TSamp':
+ *  y = u * K where K = 1 / ( w * Ts )
+ */
+    localB->aqof5fq24y_dhamdvybc1[localB->i] = localB->denAccum;
+    /* {S!d336}DiscreteFilter: '<S424>/IIRgyroz' incorporates:
+ *  Delay: '<S420>/Delay'
+ *  Sum: '<S424>/Add'
+ */
+    localB->ch1fnv55xz_guugdwf2m3[localB->i] = localB->iqp3neo1wg_dapv3jlyq5 - localDW->bs11adx5jj[localB->i];
+}
+/* {S!d338}Abs: '<S424>/Abs' incorporates:
+ *  Abs: '<S424>/Abs4'
+ */
+localB->iqp3neo1wg_dapv3jlyq5 = (real32_T)fabs(localB->kb55jy5iky);
+/* {S!d340}Abs: '<S424>/Abs1' incorporates:
+ *  Abs: '<S424>/Abs5'
+ */
+localB->denAccum = (real32_T)fabs(localB->di0vapflam);
+/* {S!d342}Logic: '<S424>/Logical Operator3' incorporates:
+ *  Abs: '<S424>/Abs'
+ *  Abs: '<S424>/Abs1'
+ *  Abs: '<S424>/Abs2'
+ *  Abs: '<S424>/Abs3'
+ *  Abs: '<S424>/Abs6'
+ *  Abs: '<S424>/Abs7'
+ *  Abs: '<S424>/Abs8'
+ *  Abs: '<S424>/Abs9'
+ *  Constant: '<S433>/Constant'
+ *  Constant: '<S434>/Constant'
+ *  Constant: '<S435>/Constant'
+ *  Constant: '<S436>/Constant'
+ *  Constant: '<S437>/Constant'
+ *  Constant: '<S438>/Constant'
+ *  Constant: '<S439>/Constant'
+ *  Constant: '<S440>/Constant'
+ *  Constant: '<S441>/Constant'
+ *  Constant: '<S442>/Constant'
+ *  Constant: '<S443>/Constant'
+ *  Logic: '<S424>/Logical Operator'
+ *  Logic: '<S424>/Logical Operator1'
+ *  Logic: '<S424>/Logical Operator2'
+ *  RelationalOperator: '<S433>/Compare'
+ *  RelationalOperator: '<S434>/Compare'
+ *  RelationalOperator: '<S435>/Compare'
+ *  RelationalOperator: '<S436>/Compare'
+ *  RelationalOperator: '<S437>/Compare'
+ *  RelationalOperator: '<S438>/Compare'
+ *  RelationalOperator: '<S439>/Compare'
+ *  RelationalOperator: '<S440>/Compare'
+ *  RelationalOperator: '<S441>/Compare'
+ *  RelationalOperator: '<S442>/Compare'
+ *  RelationalOperator: '<S443>/Compare'
+ */
+localB->olu11ofwkn = (((((real32_T)fabs(localB->fbukxwx20m[1]) <= localP->maxp_const) && ((real32_T)fabs(localB->fbukxwx20m[2]) <= localP->maxq_const) && (localB->iqp3neo1wg_dapv3jlyq5 <= localP->maxw1_const) && (localB->denAccum <= localP->maxw2_const) && ((real32_T)fabs(localDW->bwea4hxqvk[0]) <= localP->maxdw1_const) && ((real32_T)fabs(localDW->bwea4hxqvk[1]) <= localP->maxdw2_const)) || ((localB->iqp3neo1wg_dapv3jlyq5 <= localP->maxp2_const) && (localB->denAccum <= localP->maxq2_const))) && ((real32_T)fabs(localB->ch1fnv55xz_guugdwf2m3[0]) <= localP->maxw3_const) && ((real32_T)fabs(localB->ch1fnv55xz_guugdwf2m3[1]) <= localP->maxw4_const) && (localB->dnazwsvmne <= localP->minHeightforOF_const));
+/* {S!d193}Outputs for Enabled SubSystem: '<S470>/Enabled Subsystem' incorporates:
+ *  EnablePort: '<S496>/Enable'
+ */
+/* {S!d350}DataTypeConversion: '<S425>/DataTypeConversionEnable' */
+if (localB->olu11ofwkn) {
+    localDW->pg0c4rhf4s = true;
+    /* {S!d344}Sum: '<S496>/Add1' incorporates:
+ *  Constant: '<S425>/C'
+ *  Delay: '<S425>/MemoryX'
+ *  Product: '<S496>/Product'
+ *  Reshape: '<S425>/Reshapey'
+ */
+    for (localB->j = 0; localB->j < 2; localB->j++) {
+        localB->ch1fnv55xz_guugdwf2m3[localB->j] = localB->cx3xemd1qz[localB->j] - (((localP->C_Value_i2rj2gykf0[localB->j + 2] * localDW->coz3ppgkas[1] + localP->C_Value_i2rj2gykf0[localB->j] * localDW->coz3ppgkas[0]) + localP->C_Value_i2rj2gykf0[localB->j + 4] * localDW->coz3ppgkas[2]) + localP->C_Value_i2rj2gykf0[localB->j + 6] * localDW->coz3ppgkas[3]);
+    }
+    /* {E!d344}End of Sum: '<S496>/Add1' */
+    for (localB->j = 0; localB->j < 4; localB->j++) {
+        /* {S!d346}Product: '<S496>/Product2' incorporates:
+ *  Constant: '<S444>/KalmanGainM'
+ *  DataTypeConversion: '<S487>/Conversion'
+ */
+        localB->cxjyl01bud[localB->j] = 0.0F;
+        localB->cxjyl01bud[localB->j] += (real32_T)localP->KalmanGainM_Value_iznlefhuea[localB->j] * localB->ch1fnv55xz_guugdwf2m3[0];
+        localB->cxjyl01bud[localB->j] += (real32_T)localP->KalmanGainM_Value_iznlefhuea[localB->j + 4] * localB->ch1fnv55xz_guugdwf2m3[1];
+    }
+    srUpdateBC(localDW->l4nshphdfj);
+} else if (localDW->pg0c4rhf4s) {
+    /* {S!d348}Disable for Product: '<S496>/Product2' incorporates:
+ *  Outport: '<S496>/deltax'
+ */
+    localB->cxjyl01bud[0] = localP->deltax_Y0_k5wvmx5y5h;
+    localB->cxjyl01bud[1] = localP->deltax_Y0_k5wvmx5y5h;
+    localB->cxjyl01bud[2] = localP->deltax_Y0_k5wvmx5y5h;
+    localB->cxjyl01bud[3] = localP->deltax_Y0_k5wvmx5y5h;
+    localDW->pg0c4rhf4s = false;
+}
+/* {E!d193}End of Outputs for SubSystem: '<S470>/Enabled Subsystem' */
+
+/* {S!d352}Reshape: '<S425>/Reshapexhat' incorporates:
+ *  Delay: '<S425>/MemoryX'
+ *  Sum: '<S470>/Add'
+ */
+localB->n2tsgqseru[0] = localB->cxjyl01bud[0] + localDW->coz3ppgkas[0];
+localB->n2tsgqseru[1] = localB->cxjyl01bud[1] + localDW->coz3ppgkas[1];
+localB->n2tsgqseru[2] = localB->cxjyl01bud[2] + localDW->coz3ppgkas[2];
+localB->n2tsgqseru[3] = localB->cxjyl01bud[3] + localDW->coz3ppgkas[3];
+/* {S!d354}Trigonometry: '<S241>/sincos' incorporates:
+ *  MATLAB Function: '<S10>/Position error transformation (Earth to Body frame)'
+ *  Trigonometry: '<S428>/sincos'
+ *  Trigonometry: '<S501>/sincos'
+ */
+localB->gllpmqmq54_idx_0_tmp = (real32_T)sin(localB->fbukxwx20m[0]);
+localB->pfrm53noc2_idx_0_tmp = (real32_T)cos(localB->fbukxwx20m[0]);
+localB->iqp3neo1wg_dapv3jlyq5 = (real32_T)sin(localB->fbukxwx20m[1]);
+localB->denAccum = (real32_T)cos(localB->fbukxwx20m[1]);
+localB->nv4htcsfja_idx_0 = (real32_T)sin(localB->fbukxwx20m[2]);
+localB->a5giso52ti_idx_0 = (real32_T)cos(localB->fbukxwx20m[2]);
+/* {S!d356}Fcn: '<S241>/Fcn11' incorporates:
+ *  Fcn: '<S428>/Fcn11'
+ *  Fcn: '<S501>/Fcn11'
+ *  Trigonometry: '<S241>/sincos'
+ */
+localB->d3uu2vuvm3_tmp = localB->pfrm53noc2_idx_0_tmp * localB->denAccum;
+localB->d3uu2vuvm3_kkiq3xxxve[0] = localB->d3uu2vuvm3_tmp;
+/* {S!d358}Fcn: '<S241>/Fcn21' incorporates:
+ *  Fcn: '<S428>/Fcn21'
+ *  Fcn: '<S501>/Fcn21'
+ *  Trigonometry: '<S241>/sincos'
+ */
+localB->grmb2sj2e5_idx_0 = localB->iqp3neo1wg_dapv3jlyq5 * localB->nv4htcsfja_idx_0;
+d3uu2vuvm3_tmp = localB->gllpmqmq54_idx_0_tmp * localB->a5giso52ti_idx_0;
+localB->d3uu2vuvm3_kkiq3xxxve[1] = localB->grmb2sj2e5_idx_0 * localB->pfrm53noc2_idx_0_tmp - d3uu2vuvm3_tmp;
+/* {S!d360}Fcn: '<S241>/Fcn31' incorporates:
+ *  Fcn: '<S428>/Fcn31'
+ *  Fcn: '<S501>/Fcn31'
+ *  Trigonometry: '<S241>/sincos'
+ */
+localB->jis5apiwbt_idx_0 = localB->iqp3neo1wg_dapv3jlyq5 * localB->a5giso52ti_idx_0;
+localB->jis5apiwbt_idx_1 = localB->gllpmqmq54_idx_0_tmp * localB->nv4htcsfja_idx_0;
+localB->d3uu2vuvm3_kkiq3xxxve[2] = localB->jis5apiwbt_idx_0 * localB->pfrm53noc2_idx_0_tmp + localB->jis5apiwbt_idx_1;
+/* {S!d362}Fcn: '<S241>/Fcn12' incorporates:
+ *  Fcn: '<S428>/Fcn12'
+ *  Fcn: '<S501>/Fcn12'
+ *  Trigonometry: '<S241>/sincos'
+ */
+localB->grmb2sj2e5_idx_1 = localB->gllpmqmq54_idx_0_tmp * localB->denAccum;
+localB->d3uu2vuvm3_kkiq3xxxve[3] = localB->grmb2sj2e5_idx_1;
+/* {S!d364}Fcn: '<S241>/Fcn22' incorporates:
+ *  Fcn: '<S241>/Fcn21'
+ *  Fcn: '<S428>/Fcn22'
+ *  Fcn: '<S501>/Fcn22'
+ *  Trigonometry: '<S241>/sincos'
+ */
+localB->hjdxkyvxxx_ezqlmfzvpq = localB->pfrm53noc2_idx_0_tmp * localB->a5giso52ti_idx_0;
+localB->d3uu2vuvm3_kkiq3xxxve[4] = localB->grmb2sj2e5_idx_0 * localB->gllpmqmq54_idx_0_tmp + localB->hjdxkyvxxx_ezqlmfzvpq;
+/* {S!d366}Fcn: '<S241>/Fcn32' incorporates:
+ *  Fcn: '<S241>/Fcn31'
+ *  Fcn: '<S428>/Fcn32'
+ *  Fcn: '<S501>/Fcn32'
+ *  Trigonometry: '<S241>/sincos'
+ */
+d3uu2vuvm3_tmp_p = localB->pfrm53noc2_idx_0_tmp * localB->nv4htcsfja_idx_0;
+localB->d3uu2vuvm3_kkiq3xxxve[5] = localB->jis5apiwbt_idx_0 * localB->gllpmqmq54_idx_0_tmp - d3uu2vuvm3_tmp_p;
+/* {S!d368}Fcn: '<S241>/Fcn13' incorporates:
+ *  Trigonometry: '<S241>/sincos'
+ */
+localB->d3uu2vuvm3_kkiq3xxxve[6] = -localB->iqp3neo1wg_dapv3jlyq5;
+/* {S!d370}Fcn: '<S241>/Fcn23' incorporates:
+ *  Fcn: '<S428>/Fcn23'
+ *  Fcn: '<S501>/Fcn23'
+ *  Trigonometry: '<S241>/sincos'
+ */
+localB->nv4htcsfja_idx_0 *= localB->denAccum;
+localB->d3uu2vuvm3_kkiq3xxxve[7] = localB->nv4htcsfja_idx_0;
+/* {S!d372}Fcn: '<S241>/Fcn33' incorporates:
+ *  Fcn: '<S428>/Fcn33'
+ *  Fcn: '<S501>/Fcn33'
+ *  Trigonometry: '<S241>/sincos'
+ */
+localB->denAccum *= localB->a5giso52ti_idx_0;
+localB->d3uu2vuvm3_kkiq3xxxve[8] = localB->denAccum;
+/* {S!d374}SignalConversion generated from: '<S235>/Product1' incorporates:
+ *  Delay: '<S6>/Delay1'
+ */
+localB->unnamed_idx_0 = localDW->joy12tk1bf[0];
+localB->unnamed_idx_1 = localDW->joy12tk1bf[1];
+/* {S!d376}Product: '<S235>/Product1' incorporates:
+ *  Math: '<S235>/Math Function'
+ *  Reshape: '<S239>/Reshapexhat'
+ *  SignalConversion generated from: '<S235>/Product1'
+ */
+for (localB->j = 0; localB->j < 3; localB->j++) {
+    localB->d3uu2vuvm3_fqdqrf4qbc[localB->j] = localB->d3uu2vuvm3_kkiq3xxxve[localB->j + 6] * localB->afiouwlyig_jwzvbuczlb + (localB->d3uu2vuvm3_kkiq3xxxve[localB->j + 3] * localB->unnamed_idx_1 + localB->d3uu2vuvm3_kkiq3xxxve[localB->j] * localB->unnamed_idx_0);
+}
+/* {E!d376}End of Product: '<S235>/Product1' */
+
+/* {S!d378}DataTypeConversion: '<S235>/Data Type Conversion2' */
+localB->j3gikbjvns = (real32_T)localB->d3uu2vuvm3_fqdqrf4qbc[2];
+/* {S!d380}SignalConversion generated from: '<S1>/To Workspace' */
+localB->lip1w3qso4[0] = localB->am53zdlbzw[0];
+localB->lip1w3qso4[1] = localB->am53zdlbzw[1];
+localB->lip1w3qso4[2] = localB->dnazwsvmne;
+localB->lip1w3qso4[3] = localB->fbukxwx20m[0];
+localB->lip1w3qso4[4] = localB->fbukxwx20m[1];
+localB->lip1w3qso4[5] = localB->fbukxwx20m[2];
+localB->lip1w3qso4[6] = localB->n2tsgqseru[0];
+localB->lip1w3qso4[7] = localB->n2tsgqseru[1];
+localB->lip1w3qso4[8] = localB->j3gikbjvns;
+localB->lip1w3qso4[9] = localB->n0pnodhba1[0];
+localB->lip1w3qso4[10] = localB->n0pnodhba1[1];
+localB->lip1w3qso4[11] = localB->n0pnodhba1[2];
+%if !WHITE_SPACE(tlcOutputsFcnOfS25B44)
+/* {S!d382}ToWorkspace: '<S1>/To Workspace' */
+%<tlcOutputsFcnOfS25B44>\
+%endif
+/* {S!d384}Math: '<S235>/Math Function' */
+for (localB->j = 0; localB->j < 3; localB->j++) {
+    localB->d3uu2vuvm3_pbm3vprmfu[3 * localB->j] = localB->d3uu2vuvm3_kkiq3xxxve[localB->j];
+    localB->d3uu2vuvm3_pbm3vprmfu[3 * localB->j + 1] = localB->d3uu2vuvm3_kkiq3xxxve[localB->j + 3];
+    localB->d3uu2vuvm3_pbm3vprmfu[3 * localB->j + 2] = localB->d3uu2vuvm3_kkiq3xxxve[localB->j + 6];
+}
+for (localB->j = 0; localB->j < 9; localB->j++) {
+    localB->d3uu2vuvm3_kkiq3xxxve[localB->j] = localB->d3uu2vuvm3_pbm3vprmfu[localB->j];
+}
+/* {E!d384}End of Math: '<S235>/Math Function' */
+
+/* {S!d386}Fcn: '<S428>/Fcn11' */
+localB->pa4ldzjdhn_cxarnvbvui[0] = localB->d3uu2vuvm3_tmp;
+/* {S!d388}Fcn: '<S428>/Fcn21' */
+localB->pa4ldzjdhn_cxarnvbvui[1] = localB->grmb2sj2e5_idx_0 * localB->pfrm53noc2_idx_0_tmp - d3uu2vuvm3_tmp;
+/* {S!d390}Fcn: '<S428>/Fcn31' */
+localB->pa4ldzjdhn_cxarnvbvui[2] = localB->jis5apiwbt_idx_0 * localB->pfrm53noc2_idx_0_tmp + localB->jis5apiwbt_idx_1;
+/* {S!d392}Fcn: '<S428>/Fcn12' */
+localB->pa4ldzjdhn_cxarnvbvui[3] = localB->grmb2sj2e5_idx_1;
+/* {S!d394}Fcn: '<S428>/Fcn22' */
+localB->pa4ldzjdhn_cxarnvbvui[4] = localB->grmb2sj2e5_idx_0 * localB->gllpmqmq54_idx_0_tmp + localB->hjdxkyvxxx_ezqlmfzvpq;
+/* {S!d396}Fcn: '<S428>/Fcn32' */
+localB->pa4ldzjdhn_cxarnvbvui[5] = localB->jis5apiwbt_idx_0 * localB->gllpmqmq54_idx_0_tmp - d3uu2vuvm3_tmp_p;
+/* {S!d398}Fcn: '<S428>/Fcn13' */
+localB->pa4ldzjdhn_cxarnvbvui[6] = -localB->iqp3neo1wg_dapv3jlyq5;
+/* {S!d400}Fcn: '<S428>/Fcn23' */
+localB->pa4ldzjdhn_cxarnvbvui[7] = localB->nv4htcsfja_idx_0;
+/* {S!d402}Fcn: '<S428>/Fcn33' */
+localB->pa4ldzjdhn_cxarnvbvui[8] = localB->denAccum;
+/* {S!d404}Fcn: '<S501>/Fcn11' */
+localB->gwq0iv103m_bhxxfovxdy[0] = localB->d3uu2vuvm3_tmp;
+/* {S!d406}Fcn: '<S501>/Fcn21' */
+localB->gwq0iv103m_bhxxfovxdy[1] = localB->grmb2sj2e5_idx_0 * localB->pfrm53noc2_idx_0_tmp - d3uu2vuvm3_tmp;
+/* {S!d408}Fcn: '<S501>/Fcn31' */
+localB->gwq0iv103m_bhxxfovxdy[2] = localB->jis5apiwbt_idx_0 * localB->pfrm53noc2_idx_0_tmp + localB->jis5apiwbt_idx_1;
+/* {S!d410}Fcn: '<S501>/Fcn12' */
+localB->gwq0iv103m_bhxxfovxdy[3] = localB->grmb2sj2e5_idx_1;
+/* {S!d412}Fcn: '<S501>/Fcn22' */
+localB->gwq0iv103m_bhxxfovxdy[4] = localB->grmb2sj2e5_idx_0 * localB->gllpmqmq54_idx_0_tmp + localB->hjdxkyvxxx_ezqlmfzvpq;
+/* {S!d414}Fcn: '<S501>/Fcn32' */
+localB->gwq0iv103m_bhxxfovxdy[5] = localB->jis5apiwbt_idx_0 * localB->gllpmqmq54_idx_0_tmp - d3uu2vuvm3_tmp_p;
+/* {S!d416}Fcn: '<S501>/Fcn13' */
+localB->gwq0iv103m_bhxxfovxdy[6] = -localB->iqp3neo1wg_dapv3jlyq5;
+/* {S!d418}Fcn: '<S501>/Fcn23' */
+localB->gwq0iv103m_bhxxfovxdy[7] = localB->nv4htcsfja_idx_0;
+/* {S!d420}Fcn: '<S501>/Fcn33' */
+localB->gwq0iv103m_bhxxfovxdy[8] = localB->denAccum;
+/* {S!d422}Math: '<S421>/Math Function' */
+for (localB->j = 0; localB->j < 3; localB->j++) {
+    localB->d3uu2vuvm3_pbm3vprmfu[3 * localB->j] = localB->gwq0iv103m_bhxxfovxdy[localB->j];
+    localB->d3uu2vuvm3_pbm3vprmfu[3 * localB->j + 1] = localB->gwq0iv103m_bhxxfovxdy[localB->j + 3];
+    localB->d3uu2vuvm3_pbm3vprmfu[3 * localB->j + 2] = localB->gwq0iv103m_bhxxfovxdy[localB->j + 6];
+}
+for (localB->j = 0; localB->j < 9; localB->j++) {
+    localB->gwq0iv103m_bhxxfovxdy[localB->j] = localB->d3uu2vuvm3_pbm3vprmfu[localB->j];
+}
+/* {E!d422}End of Math: '<S421>/Math Function' */
+
+/* {S!d424}RelationalOperator: '<S427>/Compare' incorporates:
+ *  Constant: '<S427>/Constant'
+ */
+d4hayi4src = (localB->dnazwsvmne <= localP->DeactivateAccelerationIfOFisnotusedduetolowaltitude_const);
+/* {S!d426}Logic: '<S422>/Logical Operator' incorporates:
+ *  Constant: '<S429>/Constant'
+ *  Constant: '<S430>/Constant'
+ *  RelationalOperator: '<S429>/Compare'
+ *  RelationalOperator: '<S430>/Compare'
+ */
+byuube5zvh = ((localB->bnbpr1cmqp_ppxrqq0gsf[0] != localP->donotuseaccifopticalflowneveravailableNoteOF60HzbutZOHto200_con) || (localB->bnbpr1cmqp_ppxrqq0gsf[1] != localP->donotuseaccifopticalflowneveravailableNoteOF60HzbutZOHto2001_co));
+/* {S!d428}Sum: '<S422>/Add' incorporates:
+ *  Constant: '<S422>/gravity'
+ *  Product: '<S422>/Product1'
+ *  Reshape: '<S431>/Reshape (9) to [3x3] column-major'
+ */
+for (localB->j = 0; localB->j < 3; localB->j++) {
+    localB->d3uu2vuvm3_fqdqrf4qbc[localB->j] = localB->k31ssxc4ec_nz4o0shxby[localB->j] - ((localB->pa4ldzjdhn_cxarnvbvui[localB->j + 3] * localP->gravity_Value[1] + localB->pa4ldzjdhn_cxarnvbvui[localB->j] * localP->gravity_Value[0]) + localB->pa4ldzjdhn_cxarnvbvui[localB->j + 6] * localP->gravity_Value[2]);
+}
+/* {E!d428}End of Sum: '<S422>/Add' */
+
+/* {S!d430}Product: '<S422>/Product' incorporates:
+ *  Gain: '<S422>/gainaccinput1'
+ */
+localB->j4f4ocvklu[0] = (real32_T)(localP->gainaccinput1_Gain * localB->d3uu2vuvm3_fqdqrf4qbc[0]) * (real32_T)byuube5zvh * (real32_T)d4hayi4src;
+localB->j4f4ocvklu[1] = (real32_T)(localP->gainaccinput1_Gain * localB->d3uu2vuvm3_fqdqrf4qbc[1]) * (real32_T)byuube5zvh * (real32_T)d4hayi4src;
+/* {S!d195}Outputs for Enabled SubSystem: '<S463>/MeasurementUpdate' incorporates:
+ *  EnablePort: '<S494>/Enable'
+ */
+/* {S!d438}DataTypeConversion: '<S425>/DataTypeConversionEnable' */
+if (localB->olu11ofwkn) {
+    localDW->a1wkwaye0m = true;
+    for (localB->j = 0; localB->j < 2; localB->j++) {
+        /* {S!d432}Sum: '<S494>/Sum' incorporates:
+ *  Constant: '<S425>/C'
+ *  Constant: '<S425>/D'
+ *  Delay: '<S425>/MemoryX'
+ *  Product: '<S494>/C[k]*xhat[k|k-1]'
+ *  Product: '<S494>/D[k]*u[k]'
+ *  Reshape: '<S425>/Reshapeu'
+ *  Reshape: '<S425>/Reshapey'
+ *  Sum: '<S494>/Add1'
+ */
+        localB->ch1fnv55xz_guugdwf2m3[localB->j] = localB->cx3xemd1qz[localB->j] - ((localP->C_Value_i2rj2gykf0[localB->j + 6] * localDW->coz3ppgkas[3] + (localP->C_Value_i2rj2gykf0[localB->j + 4] * localDW->coz3ppgkas[2] + (localP->C_Value_i2rj2gykf0[localB->j + 2] * localDW->coz3ppgkas[1] + localP->C_Value_i2rj2gykf0[localB->j] * localDW->coz3ppgkas[0]))) + (localP->D_Value_hewe32b5gz[localB->j + 2] * localB->j4f4ocvklu[1] + localP->D_Value_hewe32b5gz[localB->j] * localB->j4f4ocvklu[0]));
+    }
+    for (localB->j = 0; localB->j < 4; localB->j++) {
+        /* {S!d434}Product: '<S494>/Product3' incorporates:
+ *  Constant: '<S444>/KalmanGainL'
+ *  DataTypeConversion: '<S486>/Conversion'
+ */
+        localB->ipfvwleu0r[localB->j] = 0.0F;
+        localB->ipfvwleu0r[localB->j] += (real32_T)localP->KalmanGainL_Value[localB->j] * localB->ch1fnv55xz_guugdwf2m3[0];
+        localB->ipfvwleu0r[localB->j] += (real32_T)localP->KalmanGainL_Value[localB->j + 4] * localB->ch1fnv55xz_guugdwf2m3[1];
+    }
+    srUpdateBC(localDW->mwwbqhz3bs);
+} else if (localDW->a1wkwaye0m) {
+    /* {S!d436}Disable for Product: '<S494>/Product3' incorporates:
+ *  Outport: '<S494>/L*(y[k]-yhat[k|k-1])'
+ */
+    localB->ipfvwleu0r[0] = localP->Lykyhatkk1_Y0_cokidwstay;
+    localB->ipfvwleu0r[1] = localP->Lykyhatkk1_Y0_cokidwstay;
+    localB->ipfvwleu0r[2] = localP->Lykyhatkk1_Y0_cokidwstay;
+    localB->ipfvwleu0r[3] = localP->Lykyhatkk1_Y0_cokidwstay;
+    localDW->a1wkwaye0m = false;
+}
+/* {E!d195}End of Outputs for SubSystem: '<S463>/MeasurementUpdate' */
+
+/* {S!d440}RelationalOperator: '<S13>/Compare' incorporates:
+ *  Constant: '<S13>/Constant'
+ *  UnitDelay: '<S14>/Output'
+ */
+fxb4stm2ms = (localDW->lsa3afmpix < localP->CompareToConstant_const_cfslfrws0j);
+/* {S!d442}DiscreteIntegrator: '<S7>/Discrete-Time Integrator' */
+if ((!fxb4stm2ms) && (localDW->gqvj2g0c4y == 1)) {
+    localDW->be2vxxi4ie = localP->DiscreteTimeIntegrator_IC_h2elqlsrlg;
+}
+if (localDW->be2vxxi4ie >= localP->DiscreteTimeIntegrator_UpperSat) {
+    localDW->be2vxxi4ie = localP->DiscreteTimeIntegrator_UpperSat;
+} else if (localDW->be2vxxi4ie <= localP->DiscreteTimeIntegrator_LowerSat) {
+    localDW->be2vxxi4ie = localP->DiscreteTimeIntegrator_LowerSat;
+}
+/* {S!d446}Switch: '<S5>/Switch' */
+if (n54bigp0ba) {
+    /* {S!d444}Switch: '<S5>/Switch' incorporates:
+ *  Constant: '<S5>/LatchValue'
+ */
+    localB->pxiblaqoqt = localP->LatchValue_Value;
+}
+/* {E!d446}End of Switch: '<S5>/Switch' */
+
+/* {S!d448}Sum: '<S5>/Add' incorporates:
+ *  Delay: '<S5>/Delay'
+ *  Gain: '<S5>/Gain'
+ *  Logic: '<S5>/NOT'
+ */
+localDW->grg5ntmrjd += (real_T)(!(localB->pxiblaqoqt != 0.0) ? localP->Gain_Gain_mccdmst1x5 : 0U) * 2.2737367544323206E-13;
+/* {S!d450}Sum: '<S10>/Sum1' incorporates:
+ *  Constant: '<S5>/xValue'
+ *  DataTypeConversion: '<S5>/Data Type Conversion'
+ */
+localB->nv4htcsfja_idx_0 = (real32_T)localP->xValue_Value - localB->am53zdlbzw[0];
+localB->a5giso52ti_idx_0 = (real32_T)localDW->grg5ntmrjd - localB->am53zdlbzw[1];
+/* {S!d452}Saturate: '<S159>/Saturation' incorporates:
+ *  Gain: '<S157>/Proportional Gain'
+ *  MATLAB Function: '<S10>/Position error transformation (Earth to Body frame)'
+ */
+localB->denAccum = (localB->pfrm53noc2_idx_0_tmp * localB->nv4htcsfja_idx_0 + localB->gllpmqmq54_idx_0_tmp * localB->a5giso52ti_idx_0) * localP->Positioncontroller_P;
+if (localB->denAccum > localP->Positioncontroller_UpperSaturationLimit) {
+    localB->denAccum = localP->Positioncontroller_UpperSaturationLimit;
+} else if (localB->denAccum < localP->Positioncontroller_LowerSaturationLimit) {
+    localB->denAccum = localP->Positioncontroller_LowerSaturationLimit;
+}
+/* {S!d454}Sum: '<S10>/Sum19' incorporates:
+ *  Gain: '<S157>/Proportional Gain'
+ */
+d3uu2vuvm3_tmp = localB->denAccum - localB->n2tsgqseru[0];
+/* {S!d456}Sum: '<S211>/Sum' incorporates:
+ *  DiscreteIntegrator: '<S202>/Integrator'
+ *  Gain: '<S207>/Proportional Gain'
+ */
+localB->iqp3neo1wg_dapv3jlyq5 = localP->Velocitycontroller_P * d3uu2vuvm3_tmp + localDW->mjn5ntnu3u[0];
+/* {S!d458}Saturate: '<S209>/Saturation' */
+if (localB->iqp3neo1wg_dapv3jlyq5 > localP->Velocitycontroller_UpperSaturationLimit) {
+    localB->denAccum = localP->Velocitycontroller_UpperSaturationLimit;
+} else if (localB->iqp3neo1wg_dapv3jlyq5 < localP->Velocitycontroller_LowerSaturationLimit) {
+    localB->denAccum = localP->Velocitycontroller_LowerSaturationLimit;
+} else {
+    localB->denAccum = localB->iqp3neo1wg_dapv3jlyq5;
+}
+/* {S!d460}DiscreteTransferFcn: '<S10>/LPF 8Hz Cutoff Filter to avoid oscillations  induced by position controller' */
+localDW->fuognokydi[0] = (localB->denAccum - localDW->dgkpnfrv5d[0] * localP->LPF8HzCutoffFiltertoavoidoscillationsinducedbypositi_cxxcajrqdf[1]) / localP->LPF8HzCutoffFiltertoavoidoscillationsinducedbypositi_cxxcajrqdf[0];
+/* {S!d462}Sum: '<S10>/Sum19' incorporates:
+ *  Gain: '<S157>/Proportional Gain'
+ */
+localB->ch1fnv55xz_guugdwf2m3[0] = d3uu2vuvm3_tmp;
+/* {S!d464}Sum: '<S211>/Sum' */
+localB->nco2wgzik0_ldqodwenvz[0] = localB->iqp3neo1wg_dapv3jlyq5;
+/* {S!d466}Saturate: '<S159>/Saturation' incorporates:
+ *  Gain: '<S157>/Proportional Gain'
+ *  MATLAB Function: '<S10>/Position error transformation (Earth to Body frame)'
+ */
+localB->denAccum = (-localB->gllpmqmq54_idx_0_tmp * localB->nv4htcsfja_idx_0 + localB->pfrm53noc2_idx_0_tmp * localB->a5giso52ti_idx_0) * localP->Positioncontroller_P;
+if (localB->denAccum > localP->Positioncontroller_UpperSaturationLimit) {
+    localB->denAccum = localP->Positioncontroller_UpperSaturationLimit;
+} else if (localB->denAccum < localP->Positioncontroller_LowerSaturationLimit) {
+    localB->denAccum = localP->Positioncontroller_LowerSaturationLimit;
+}
+/* {S!d468}Sum: '<S10>/Sum19' incorporates:
+ *  Gain: '<S157>/Proportional Gain'
+ */
+d3uu2vuvm3_tmp = localB->denAccum - localB->n2tsgqseru[1];
+/* {S!d470}Sum: '<S211>/Sum' incorporates:
+ *  DiscreteIntegrator: '<S202>/Integrator'
+ *  Gain: '<S207>/Proportional Gain'
+ */
+localB->iqp3neo1wg_dapv3jlyq5 = localP->Velocitycontroller_P * d3uu2vuvm3_tmp + localDW->mjn5ntnu3u[1];
+/* {S!d472}Saturate: '<S209>/Saturation' */
+if (localB->iqp3neo1wg_dapv3jlyq5 > localP->Velocitycontroller_UpperSaturationLimit) {
+    localB->denAccum = localP->Velocitycontroller_UpperSaturationLimit;
+} else if (localB->iqp3neo1wg_dapv3jlyq5 < localP->Velocitycontroller_LowerSaturationLimit) {
+    localB->denAccum = localP->Velocitycontroller_LowerSaturationLimit;
+} else {
+    localB->denAccum = localB->iqp3neo1wg_dapv3jlyq5;
+}
+/* {S!d474}DiscreteTransferFcn: '<S10>/LPF 8Hz Cutoff Filter to avoid oscillations  induced by position controller' */
+localDW->fuognokydi[1] = (localB->denAccum - localP->LPF8HzCutoffFiltertoavoidoscillationsinducedbypositi_cxxcajrqdf[1] * localDW->dgkpnfrv5d[1]) / localP->LPF8HzCutoffFiltertoavoidoscillationsinducedbypositi_cxxcajrqdf[0];
+/* {S!d476}Switch: '<S3>/Switch_refAtt' incorporates:
+ *  BusAssignment: '<S1>/Control Mode Update'
+ *  Constant: '<S1>/controlModePosVsOrient'
+ *  DiscreteTransferFcn: '<S10>/LPF 8Hz Cutoff Filter to avoid oscillations  induced by position controller'
+ *  Gain: '<S10>/Gain'
+ */
+if (localP->controlModePosVsOrient_Value) {
+    localB->jis5apiwbt_idx_0 = (localP->LPF8HzCutoffFiltertoavoidoscillationsinducedbypositioncontrolle[0] * localDW->fuognokydi[0] + localDW->dgkpnfrv5d[0] * localP->LPF8HzCutoffFiltertoavoidoscillationsinducedbypositioncontrolle[1]) * localP->Gain_Gain[0];
+    localB->jis5apiwbt_idx_1 = (localP->LPF8HzCutoffFiltertoavoidoscillationsinducedbypositioncontrolle[0] * localDW->fuognokydi[1] + localP->LPF8HzCutoffFiltertoavoidoscillationsinducedbypositioncontrolle[1] * localDW->dgkpnfrv5d[1]) * localP->Gain_Gain[1];
+} else {
+    localB->jis5apiwbt_idx_0 = g2xk5241hz->orient_ref[1];
+    localB->jis5apiwbt_idx_1 = g2xk5241hz->orient_ref[2];
+}
+/* {E!d476}End of Switch: '<S3>/Switch_refAtt' */
+
+/* {S!d478}Sum: '<S8>/Sum1' incorporates:
+ *  Gain: '<S55>/Proportional Gain'
+ *  Sum: '<S8>/Sum19'
+ */
+localB->jis5apiwbt_idx_0 = (localB->jis5apiwbt_idx_0 - localB->fbukxwx20m[1]) * localP->Anglecontrolloop_P - localB->n0pnodhba1[1];
+localB->jis5apiwbt_idx_1 = (localB->jis5apiwbt_idx_1 - localB->fbukxwx20m[2]) * localP->Anglecontrolloop_P - localB->n0pnodhba1[0];
+/* {S!d480}Gain: '<S103>/Filter Coefficient' incorporates:
+ *  DiscreteIntegrator: '<S95>/Filter'
+ *  Gain: '<S94>/Derivative Gain'
+ *  Sum: '<S95>/SumD'
+ */
+localB->gllpmqmq54_idx_0_tmp = (localP->Angularvelocitycontrolloop_D[0] * localB->jis5apiwbt_idx_0 - localDW->i2bolv3wez[0]) * localP->Angularvelocitycontrolloop_N[0];
+/* {S!d482}Sum: '<S109>/Sum' incorporates:
+ *  DiscreteIntegrator: '<S100>/Integrator'
+ *  Gain: '<S105>/Proportional Gain'
+ *  Gain: '<S94>/Derivative Gain'
+ */
+localB->pfrm53noc2_idx_0_tmp = (localP->Angularvelocitycontrolloop_P[0] * localB->jis5apiwbt_idx_0 + localDW->mwpgqzgixr[0]) + localB->gllpmqmq54_idx_0_tmp;
+/* {S!d484}Saturate: '<S107>/Saturation' */
+if (localB->pfrm53noc2_idx_0_tmp > localP->Angularvelocitycontrolloop_UpperSaturationLimit) {
+    localB->grmb2sj2e5_idx_0 = localP->Angularvelocitycontrolloop_UpperSaturationLimit;
+} else if (localB->pfrm53noc2_idx_0_tmp < localP->Angularvelocitycontrolloop_LowerSaturationLimit) {
+    localB->grmb2sj2e5_idx_0 = localP->Angularvelocitycontrolloop_LowerSaturationLimit;
+} else {
+    localB->grmb2sj2e5_idx_0 = localB->pfrm53noc2_idx_0_tmp;
+}
+/* {S!d486}Gain: '<S103>/Filter Coefficient' */
+localB->nv4htcsfja_idx_0 = localB->gllpmqmq54_idx_0_tmp;
+/* {S!d488}Sum: '<S109>/Sum' */
+localB->a5giso52ti_idx_0 = localB->pfrm53noc2_idx_0_tmp;
+/* {S!d490}Gain: '<S103>/Filter Coefficient' incorporates:
+ *  DiscreteIntegrator: '<S95>/Filter'
+ *  Gain: '<S94>/Derivative Gain'
+ *  Sum: '<S95>/SumD'
+ */
+localB->gllpmqmq54_idx_0_tmp = (localP->Angularvelocitycontrolloop_D[1] * localB->jis5apiwbt_idx_1 - localDW->i2bolv3wez[1]) * localP->Angularvelocitycontrolloop_N[1];
+/* {S!d492}Sum: '<S109>/Sum' incorporates:
+ *  DiscreteIntegrator: '<S100>/Integrator'
+ *  Gain: '<S105>/Proportional Gain'
+ *  Gain: '<S94>/Derivative Gain'
+ */
+localB->pfrm53noc2_idx_0_tmp = (localP->Angularvelocitycontrolloop_P[1] * localB->jis5apiwbt_idx_1 + localDW->mwpgqzgixr[1]) + localB->gllpmqmq54_idx_0_tmp;
+/* {S!d494}Saturate: '<S107>/Saturation' */
+if (localB->pfrm53noc2_idx_0_tmp > localP->Angularvelocitycontrolloop_UpperSaturationLimit) {
+    localB->grmb2sj2e5_idx_1 = localP->Angularvelocitycontrolloop_UpperSaturationLimit;
+} else if (localB->pfrm53noc2_idx_0_tmp < localP->Angularvelocitycontrolloop_LowerSaturationLimit) {
+    localB->grmb2sj2e5_idx_1 = localP->Angularvelocitycontrolloop_LowerSaturationLimit;
+} else {
+    localB->grmb2sj2e5_idx_1 = localB->pfrm53noc2_idx_0_tmp;
+}
+/* {S!d498}Switch: '<S117>/Environment Switch' incorporates:
+ *  Constant: '<S117>/Switch Control'
+ *  Sum: '<S9>/Add'
+ */
+if (!localP->SwitchControl_Value) {
+    /* {S!d496}ManualSwitch: '<S9>/Manual Switch' incorporates:
+ *  Constant: '<S9>/Pitch correction'
+ *  Constant: '<S9>/zero correction'
+ */
+    if (localP->ManualSwitch_CurrentSetting == 1) {
+        localB->d3uu2vuvm3_tmp = localP->Pitchcorrection_Value;
+    } else {
+        localB->d3uu2vuvm3_tmp = localP->zerocorrection_Value;
+    }
+    /* {E!d496}End of ManualSwitch: '<S9>/Manual Switch' */
+    localB->grmb2sj2e5_idx_0 += localB->d3uu2vuvm3_tmp;
+}
+/* {E!d498}End of Switch: '<S117>/Environment Switch' */
+
+/* {S!d500}Sum: '<S11>/Sum1' incorporates:
+ *  BusAssignment: '<S1>/Control Mode Update'
+ */
+localB->hjdxkyvxxx_ezqlmfzvpq = g2xk5241hz->orient_ref[0] - localB->fbukxwx20m[0];
+/* {S!d502}Saturate: '<S11>/Saturation' */
+if (localB->hjdxkyvxxx_ezqlmfzvpq > localP->Saturation_UpperSat) {
+    localB->hjdxkyvxxx_ezqlmfzvpq = localP->Saturation_UpperSat;
+} else if (localB->hjdxkyvxxx_ezqlmfzvpq < localP->Saturation_LowerSat) {
+    localB->hjdxkyvxxx_ezqlmfzvpq = localP->Saturation_LowerSat;
+}
+/* {E!d502}End of Saturate: '<S11>/Saturation' */
+
+/* {S!d504}Switch: '<S7>/TakeoffOrControl_Switch1' incorporates:
+ *  BusAssignment: '<S5>/Bus  Assignment'
+ *  Constant: '<S7>/w1'
+ *  DiscreteIntegrator: '<S7>/Discrete-Time Integrator'
+ *  Gain: '<S7>/D_z1'
+ *  Gain: '<S7>/P_z1'
+ *  Gain: '<S7>/takeoff_gain1'
+ *  Sum: '<S7>/Sum1'
+ *  Sum: '<S7>/Sum2'
+ */
+if (fxb4stm2ms) {
+    localB->d3uu2vuvm3_tmp = localP->takeoff_gain1_Gain * localP->w1_Value;
+} else {
+    localB->d3uu2vuvm3_tmp = ((0.0F - localB->dnazwsvmne) * localP->P_z1_Gain + localDW->be2vxxi4ie) - localP->D_z1_Gain * localB->j3gikbjvns;
+}
+/* {E!d504}End of Switch: '<S7>/TakeoffOrControl_Switch1' */
+
+/* {S!d506}Sum: '<S7>/Sum5' incorporates:
+ *  Constant: '<S7>/w1'
+ */
+localB->denAccum = localP->w1_Value + localB->d3uu2vuvm3_tmp;
+/* {S!d508}Saturate: '<S7>/SaturationThrust1' */
+if (localB->denAccum > localP->SaturationThrust1_UpperSat) {
+    localB->denAccum = localP->SaturationThrust1_UpperSat;
+} else if (localB->denAccum < localP->SaturationThrust1_LowerSat) {
+    localB->denAccum = localP->SaturationThrust1_LowerSat;
+}
+/* {S!d510}SignalConversion generated from: '<S9>/Product' incorporates:
+ *  DiscreteIntegrator: '<S11>/Discrete-Time Integrator'
+ *  Gain: '<S11>/D_yaw'
+ *  Gain: '<S11>/P_yaw'
+ *  Sum: '<S11>/Sum2'
+ */
+localB->d3uu2vuvm3_tmp = (localP->P_yaw_Gain * localB->hjdxkyvxxx_ezqlmfzvpq + localDW->m4so224kut) - localP->D_yaw_Gain * localB->n0pnodhba1[2];
+/* {S!d512}Product: '<S9>/Product' incorporates:
+ *  Constant: '<S9>/TorqueTotalThrustToThrustPerMotor'
+ *  Saturate: '<S7>/SaturationThrust1'
+ *  SignalConversion generated from: '<S9>/Product'
+ */
+for (localB->j = 0; localB->j < 4; localB->j++) {
+    localB->fv[localB->j] = localP->TorqueTotalThrustToThrustPerMotor_Value[localB->j + 12] * localB->grmb2sj2e5_idx_1 + (localP->TorqueTotalThrustToThrustPerMotor_Value[localB->j + 8] * localB->grmb2sj2e5_idx_0 + (localP->TorqueTotalThrustToThrustPerMotor_Value[localB->j + 4] * localB->d3uu2vuvm3_tmp + localP->TorqueTotalThrustToThrustPerMotor_Value[localB->j] * localB->denAccum));
+}
+/* {E!d512}End of Product: '<S9>/Product' */
+
+/* {S!d514}Saturate: '<S12>/Saturation5' incorporates:
+ *  Gain: '<S12>/MotorDirections'
+ *  Gain: '<S12>/ThrustToMotorCommand'
+ */
+localB->denAccum = localP->ThrustToMotorCommand_Gain * localB->fv[0];
+if (localB->denAccum > localP->Saturation5_UpperSat) {
+    localB->denAccum = localP->Saturation5_UpperSat;
+} else if (localB->denAccum < localP->Saturation5_LowerSat) {
+    localB->denAccum = localP->Saturation5_LowerSat;
+}
+/* {S!d516}Gain: '<S12>/MotorDirections' */
+motors_outport[0] = localP->MotorDirections_Gain[0] * localB->denAccum;
+/* {S!d518}Saturate: '<S12>/Saturation5' incorporates:
+ *  Gain: '<S12>/MotorDirections'
+ *  Gain: '<S12>/ThrustToMotorCommand'
+ */
+localB->denAccum = localP->ThrustToMotorCommand_Gain * localB->fv[1];
+if (localB->denAccum > localP->Saturation5_UpperSat) {
+    localB->denAccum = localP->Saturation5_UpperSat;
+} else if (localB->denAccum < localP->Saturation5_LowerSat) {
+    localB->denAccum = localP->Saturation5_LowerSat;
+}
+/* {S!d520}Gain: '<S12>/MotorDirections' */
+motors_outport[1] = localP->MotorDirections_Gain[1] * localB->denAccum;
+/* {S!d522}Saturate: '<S12>/Saturation5' incorporates:
+ *  Gain: '<S12>/MotorDirections'
+ *  Gain: '<S12>/ThrustToMotorCommand'
+ */
+localB->denAccum = localP->ThrustToMotorCommand_Gain * localB->fv[2];
+if (localB->denAccum > localP->Saturation5_UpperSat) {
+    localB->denAccum = localP->Saturation5_UpperSat;
+} else if (localB->denAccum < localP->Saturation5_LowerSat) {
+    localB->denAccum = localP->Saturation5_LowerSat;
+}
+/* {S!d524}Gain: '<S12>/MotorDirections' */
+motors_outport[2] = localP->MotorDirections_Gain[2] * localB->denAccum;
+/* {S!d526}Saturate: '<S12>/Saturation5' incorporates:
+ *  Gain: '<S12>/MotorDirections'
+ *  Gain: '<S12>/ThrustToMotorCommand'
+ */
+localB->denAccum = localP->ThrustToMotorCommand_Gain * localB->fv[3];
+if (localB->denAccum > localP->Saturation5_UpperSat) {
+    localB->denAccum = localP->Saturation5_UpperSat;
+} else if (localB->denAccum < localP->Saturation5_LowerSat) {
+    localB->denAccum = localP->Saturation5_LowerSat;
+}
+/* {S!d528}Gain: '<S12>/MotorDirections' */
+motors_outport[3] = localP->MotorDirections_Gain[3] * localB->denAccum;
+for (localB->j = 0; localB->j < 3; localB->j++) {
+    /* {S!d530}Sum: '<S235>/Sum' incorporates:
+ *  Constant: '<S235>/gravity'
+ *  DiscreteFir: '<S237>/FIR_IMUaccel'
+ *  Math: '<S235>/Math Function'
+ *  Product: '<S235>/Product'
+ */
+    localB->dephasaxdc[localB->j] = ((localB->d3uu2vuvm3_kkiq3xxxve[localB->j + 3] * localB->k31ssxc4ec_nz4o0shxby[1] + localB->d3uu2vuvm3_kkiq3xxxve[localB->j] * localB->k31ssxc4ec_nz4o0shxby[0]) + localB->d3uu2vuvm3_kkiq3xxxve[localB->j + 6] * localB->acc1) + localP->gravity_Value_jqr0ovwu0c[localB->j];
+}
+/* {S!d532}DataTypeConversion: '<S236>/Data Type Conversion1' */
+localB->otx4hpm3ri_llw0u2ae0v[0] = localB->kb55jy5iky;
+localB->otx4hpm3ri_llw0u2ae0v[1] = localB->di0vapflam;
+localB->otx4hpm3ri_llw0u2ae0v[2] = localB->hz25zcfjyj_bnlywzniup;
+/* {S!d534}DataTypeConversion: '<S375>/Conversion' */
+localB->aowctvfu5g_bsqwvugooi[0] = localB->es3lz5rywc_bjbgfqrolh[0];
+localB->aowctvfu5g_bsqwvugooi[1] = localB->es3lz5rywc_bjbgfqrolh[1];
+/* {S!d536}Reshape: '<S359>/Reshapeu' */
+c4pr3d2xvj = localB->kb55jy5iky;
+/* {S!d538}DataTypeConversion: '<S402>/Conversion' incorporates:
+ *  Constant: '<S360>/KalmanGainL'
+ */
+localB->idegysvuzh_nuebgmauvi[0] = (real32_T)localP->KalmanGainL_Value_pnfyizgwmu[0];
+localB->idegysvuzh_nuebgmauvi[1] = (real32_T)localP->KalmanGainL_Value_pnfyizgwmu[1];
+/* {S!d197}Outputs for Enabled SubSystem: '<S379>/MeasurementUpdate' */
+/* {S!d540}Constant: '<S359>/C' incorporates:
+ *  Constant: '<S359>/D'
+ */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[16], "Output",0)
+%if SLibCG_SystemFcnArgAccessed("ftjpp1i1nw",16,0)
+%<SLibCG_AccessArg(4 ,4, 0)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("ftjpp1i1nw",16,1)
+%<SLibCGIRAccessLocalVar(170, 0, "")> %% hk55w50pro
+%endif
+%if SLibCG_SystemFcnArgAccessed("ftjpp1i1nw",16,2)
+%<SLibCG_AccessArg(4 ,4, 4)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("ftjpp1i1nw",16,3)
+%<SLibCGIRAccessLocalVar(49, 0, "")> %% auadf3z5rl
+%endif
+%if SLibCG_SystemFcnArgAccessed("ftjpp1i1nw",16,4)
+%<SLibCG_AccessArg(4 ,4, 6)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("ftjpp1i1nw",16,5)
+%<SLibCG_AccessArg(4 ,4, 4)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("ftjpp1i1nw",16,6)
+%<SLibCG_AccessArg(4 ,4, 6)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("ftjpp1i1nw",16,7)
+%<SLibCGIRAccessLocalVar(80, 0, "")> %% c4pr3d2xvj
+%endif
+%if SLibCG_SystemFcnArgAccessed("ftjpp1i1nw",16,8)
+%<SLibCG_AccessArg(4 ,4, 4)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("ftjpp1i1nw",16,9)
+%<SLibCG_AccessArg(4 ,4, 5)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("ftjpp1i1nw",16,10)
+%<SLibCG_AccessArg(4 ,4, 6)>
+%endif
+
+%<SLibCGIRGenReusableSysCall("ftjpp1i1nw", ["%<::tSimStruct>", "hk55w50pro", "localB->idegysvuzh_nuebgmauvi", "auadf3z5rl", "localP->C_Value_icp2nf4rsg", "localB->aowctvfu5g_bsqwvugooi", "localP->D_Value_kewzrolmza", "c4pr3d2xvj", "&localB->ieoyjrjufk", "&localDW->ieoyjrjufk", "&localP->ieoyjrjufk"], 16, 1, 6, 0, 6, 25)>\
+
+
+/* {E!d197}End of Outputs for SubSystem: '<S379>/MeasurementUpdate' */
+
+%endif
+/* {S!d542}DataTypeConversion: '<S321>/Conversion' */
+localB->nslh4ab04o_hv2ho1zopz[0] = localB->asizdnypab_lxo5edjg3c[0];
+localB->nslh4ab04o_hv2ho1zopz[1] = localB->asizdnypab_lxo5edjg3c[1];
+/* {S!d544}Reshape: '<S305>/Reshapeu' */
+kpxdy2hldb = localB->di0vapflam;
+/* {S!d546}DataTypeConversion: '<S348>/Conversion' incorporates:
+ *  Constant: '<S306>/KalmanGainL'
+ */
+localB->o3azkfscc5_lnjdk5wtww[0] = (real32_T)localP->KalmanGainL_Value_lxbsmbqbfu[0];
+localB->o3azkfscc5_lnjdk5wtww[1] = (real32_T)localP->KalmanGainL_Value_lxbsmbqbfu[1];
+/* {S!d199}Outputs for Enabled SubSystem: '<S325>/MeasurementUpdate' */
+/* {S!d548}Constant: '<S305>/C' incorporates:
+ *  Constant: '<S305>/D'
+ */
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[16], "Output",0)
+%if SLibCG_SystemFcnArgAccessed("ftjpp1i1nw",16,0)
+%<SLibCG_AccessArg(4 ,4, 0)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("ftjpp1i1nw",16,1)
+%<SLibCGIRAccessLocalVar(169, 0, "")> %% ciwmkmz0hy
+%endif
+%if SLibCG_SystemFcnArgAccessed("ftjpp1i1nw",16,2)
+%<SLibCG_AccessArg(4 ,4, 4)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("ftjpp1i1nw",16,3)
+%<SLibCGIRAccessLocalVar(45, 0, "")> %% mq4hpbessa
+%endif
+%if SLibCG_SystemFcnArgAccessed("ftjpp1i1nw",16,4)
+%<SLibCG_AccessArg(4 ,4, 6)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("ftjpp1i1nw",16,5)
+%<SLibCG_AccessArg(4 ,4, 4)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("ftjpp1i1nw",16,6)
+%<SLibCG_AccessArg(4 ,4, 6)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("ftjpp1i1nw",16,7)
+%<SLibCGIRAccessLocalVar(84, 0, "")> %% kpxdy2hldb
+%endif
+%if SLibCG_SystemFcnArgAccessed("ftjpp1i1nw",16,8)
+%<SLibCG_AccessArg(4 ,4, 4)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("ftjpp1i1nw",16,9)
+%<SLibCG_AccessArg(4 ,4, 5)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("ftjpp1i1nw",16,10)
+%<SLibCG_AccessArg(4 ,4, 6)>
+%endif
+
+%<SLibCGIRGenReusableSysCall("ftjpp1i1nw", ["%<::tSimStruct>", "ciwmkmz0hy", "localB->o3azkfscc5_lnjdk5wtww", "mq4hpbessa", "localP->C_Value_hgmeyjklds", "localB->nslh4ab04o_hv2ho1zopz", "localP->D_Value_kgolnx5zuj", "kpxdy2hldb", "&localB->ftjpp1i1nwt", "&localDW->ftjpp1i1nwt", "&localP->ftjpp1i1nwt"], 16, 0, 6, 0, 6, 25)>\
+
+
+/* {E!d199}End of Outputs for SubSystem: '<S325>/MeasurementUpdate' */
+
+%endif
+/* {S!d201}Outputs for Enabled SubSystem: '<S261>/MeasurementUpdate' incorporates:
+ *  EnablePort: '<S291>/Enable'
+ */
+/* {S!d556}DataTypeConversion: '<S239>/DataTypeConversionEnable' */
+if (localB->bdph3bzr40) {
+    localDW->pqnbafajkv = true;
+    /* {S!d550}Sum: '<S291>/Sum' incorporates:
+ *  Constant: '<S239>/C'
+ *  Constant: '<S239>/D'
+ *  Delay: '<S239>/MemoryX'
+ *  Product: '<S291>/C[k]*xhat[k|k-1]'
+ *  Product: '<S291>/D[k]*u[k]'
+ *  Reshape: '<S239>/Reshapeu'
+ *  Reshape: '<S239>/Reshapey'
+ *  Sum: '<S291>/Add1'
+ */
+    localB->afiouwlyig_jwzvbuczlb = localB->des2f4zu3n - ((localP->C_Value[0] * localDW->glnxqugnfv[0] + localP->C_Value[1] * localDW->glnxqugnfv[1]) + localP->D_Value * localB->dephasaxdc[2]);
+    /* {S!d552}Product: '<S291>/Product3' incorporates:
+ *  Constant: '<S243>/KalmanGainL'
+ *  DataTypeConversion: '<S283>/Conversion'
+ */
+    localB->jcydcfokrq[0] = localP->KalmanGainL_Value_bldhsg2ud4[0] * localB->afiouwlyig_jwzvbuczlb;
+    localB->jcydcfokrq[1] = localP->KalmanGainL_Value_bldhsg2ud4[1] * localB->afiouwlyig_jwzvbuczlb;
+    srUpdateBC(localDW->oersqf0c3p);
+} else if (localDW->pqnbafajkv) {
+    /* {S!d554}Disable for Product: '<S291>/Product3' incorporates:
+ *  Outport: '<S291>/L*(y[k]-yhat[k|k-1])'
+ */
+    localB->jcydcfokrq[0] = localP->Lykyhatkk1_Y0;
+    localB->jcydcfokrq[1] = localP->Lykyhatkk1_Y0;
+    localDW->pqnbafajkv = false;
+}
+/* {E!d201}End of Outputs for SubSystem: '<S261>/MeasurementUpdate' */
+
+/* {S!d558}DeadZone: '<S93>/DeadZone' incorporates:
+ *  Gain: '<S91>/ZeroGain'
+ */
+if (localB->a5giso52ti_idx_0 > localP->Angularvelocitycontrolloop_UpperSaturationLimit) {
+    localB->acc1 = localB->a5giso52ti_idx_0 - localP->Angularvelocitycontrolloop_UpperSaturationLimit;
+} else if (localB->a5giso52ti_idx_0 >= localP->Angularvelocitycontrolloop_LowerSaturationLimit) {
+    localB->acc1 = 0.0F;
+} else {
+    localB->acc1 = localB->a5giso52ti_idx_0 - localP->Angularvelocitycontrolloop_LowerSaturationLimit;
+}
+/* {S!d560}Gain: '<S97>/Integral Gain' */
+localB->jis5apiwbt_idx_0 *= localP->Angularvelocitycontrolloop_I[0];
+/* {S!d562}Gain: '<S193>/ZeroGain' */
+localB->grmb2sj2e5_idx_0 = localP->ZeroGain_Gain_enbc23v5lc * localB->nco2wgzik0_ldqodwenvz[0];
+/* {S!d564}DeadZone: '<S195>/DeadZone' incorporates:
+ *  Gain: '<S193>/ZeroGain'
+ */
+if (localB->nco2wgzik0_ldqodwenvz[0] > localP->Velocitycontroller_UpperSaturationLimit) {
+    localB->denAccum = localB->nco2wgzik0_ldqodwenvz[0] - localP->Velocitycontroller_UpperSaturationLimit;
+} else if (localB->nco2wgzik0_ldqodwenvz[0] >= localP->Velocitycontroller_LowerSaturationLimit) {
+    localB->denAccum = 0.0F;
+} else {
+    localB->denAccum = localB->nco2wgzik0_ldqodwenvz[0] - localP->Velocitycontroller_LowerSaturationLimit;
+}
+/* {S!d566}Gain: '<S199>/Integral Gain' */
+localB->grmb2sj2e5_idx_1 = localP->Velocitycontroller_I * localB->ch1fnv55xz_guugdwf2m3[0];
+/* {S!d568}DeadZone: '<S195>/DeadZone' incorporates:
+ *  Gain: '<S193>/ZeroGain'
+ */
+if (localB->nco2wgzik0_ldqodwenvz[0] > localP->Velocitycontroller_UpperSaturationLimit) {
+    localB->nco2wgzik0_ldqodwenvz[0] -= localP->Velocitycontroller_UpperSaturationLimit;
+} else if (localB->nco2wgzik0_ldqodwenvz[0] >= localP->Velocitycontroller_LowerSaturationLimit) {
+    localB->nco2wgzik0_ldqodwenvz[0] = 0.0F;
+} else {
+    localB->nco2wgzik0_ldqodwenvz[0] -= localP->Velocitycontroller_LowerSaturationLimit;
+}
+/* {S!d570}DeadZone: '<S93>/DeadZone' */
+if (localB->pfrm53noc2_idx_0_tmp > localP->Angularvelocitycontrolloop_UpperSaturationLimit) {
+    d3uu2vuvm3_tmp_p = localB->pfrm53noc2_idx_0_tmp - localP->Angularvelocitycontrolloop_UpperSaturationLimit;
+} else if (localB->pfrm53noc2_idx_0_tmp >= localP->Angularvelocitycontrolloop_LowerSaturationLimit) {
+    d3uu2vuvm3_tmp_p = 0.0F;
+} else {
+    d3uu2vuvm3_tmp_p = localB->pfrm53noc2_idx_0_tmp - localP->Angularvelocitycontrolloop_LowerSaturationLimit;
+}
+/* {S!d572}Gain: '<S97>/Integral Gain' */
+localB->jis5apiwbt_idx_1 *= localP->Angularvelocitycontrolloop_I[1];
+/* {S!d574}DeadZone: '<S195>/DeadZone' */
+if (localB->iqp3neo1wg_dapv3jlyq5 > localP->Velocitycontroller_UpperSaturationLimit) {
+    localB->nco2wgzik0_ldqodwenvz[1] = localB->iqp3neo1wg_dapv3jlyq5 - localP->Velocitycontroller_UpperSaturationLimit;
+} else if (localB->iqp3neo1wg_dapv3jlyq5 >= localP->Velocitycontroller_LowerSaturationLimit) {
+    localB->nco2wgzik0_ldqodwenvz[1] = 0.0F;
+} else {
+    localB->nco2wgzik0_ldqodwenvz[1] = localB->iqp3neo1wg_dapv3jlyq5 - localP->Velocitycontroller_LowerSaturationLimit;
+}
+/* {S!d576}Gain: '<S199>/Integral Gain' */
+d3uu2vuvm3_tmp *= localP->Velocitycontroller_I;
+/* {S!d578}Sum: '<S15>/FixPt Sum1' incorporates:
+ *  Constant: '<S15>/FixPt Constant'
+ *  UnitDelay: '<S14>/Output'
+ */
+localDW->lsa3afmpix = (uint16_T)((uint32_T)localDW->lsa3afmpix + localP->FixPtConstant_Value_gt3ocxrljc);
+/* {S!d580}RelationalOperator: '<S4>/GreaterThan' incorporates:
+ *  Constant: '<S4>/Wait  3 Seconds'
+ *  UnitDelay: '<S227>/Output'
+ */
+d4hayi4src = (localDW->aj2vlvhpfu > localP->Wait3Seconds_Value);
+/* {S!d582}Switch: '<S4>/Switch' incorporates:
+ *  Constant: '<S4>/ '
+ */
+if (d4hayi4src) {
+    localB->afiouwlyig_jwzvbuczlb = dpqnxx3lex->VisionSensors.opticalFlow_data[2];
+    localB->unnamed_idx_0 = dpqnxx3lex->VisionSensors.opticalFlow_data[2];
+} else {
+    localB->afiouwlyig_jwzvbuczlb = localP->_Value;
+    localB->unnamed_idx_0 = localP->_Value;
+}
+/* {E!d582}End of Switch: '<S4>/Switch' */
+
+/* {S!d584}Sum: '<S4>/Add' incorporates:
+ *  Constant: '<S220>/Constant'
+ *  DataTypeConversion: '<S4>/   '
+ *  Delay: '<S4>/Delay One Step'
+ *  Product: '<S4>/  '
+ *  RelationalOperator: '<S220>/Compare'
+ */
+localDW->myqcaypgmg = (real_T)(localB->unnamed_idx_0 == localP->Checkerrorcondition_const) * localDW->myqcaypgmg + (real_T)(localB->afiouwlyig_jwzvbuczlb == localP->Checkerrorcondition_const);
+/* {S!d590}If: '<S4>/If' incorporates:
+ *  Abs: '<S4>/Abs'
+ *  Abs: '<S4>/Abs  '
+ *  Abs: '<S4>/Abs1'
+ *  Abs: '<S4>/Abs2'
+ *  Abs: '<S4>/Abs3'
+ *  Abs: '<S4>/Abs4'
+ *  Abs: '<S4>/Abs5'
+ *  Constant: '<S219>/Constant'
+ *  Constant: '<S221>/Constant'
+ *  Constant: '<S222>/Constant'
+ *  Constant: '<S223>/Constant'
+ *  Constant: '<S224>/Constant'
+ *  Constant: '<S225>/Constant'
+ *  Constant: '<S226>/Constant'
+ *  Constant: '<S4>/0.5 meters'
+ *  Gain: '<S4>/Gain'
+ *  Gain: '<S4>/Gain1'
+ *  Logic: '<S4>/Logical Operator'
+ *  Logic: '<S4>/Logical Operator1'
+ *  Logic: '<S4>/Logical Operator2'
+ *  Logic: '<S4>/Logical Operator3'
+ *  RelationalOperator: '<S219>/Compare'
+ *  RelationalOperator: '<S221>/Compare'
+ *  RelationalOperator: '<S222>/Compare'
+ *  RelationalOperator: '<S223>/Compare'
+ *  RelationalOperator: '<S224>/Compare'
+ *  RelationalOperator: '<S225>/Compare'
+ *  RelationalOperator: '<S226>/Compare'
+ *  RelationalOperator: '<S4>/GreaterThan  '
+ *  Sum: '<S4>/Subtract'
+ *  Sum: '<S4>/Subtract1'
+ *  Switch: '<S4>/         '
+ */
+if (((real32_T)fabs(localB->am53zdlbzw[0]) > localP->CompareToConstant_const_j00hy5w41n) || ((real32_T)fabs(localB->am53zdlbzw[1]) > localP->CompareToConstant1_const_es2id1xqb3)) {
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[7], "Output",0)
+    /* {S!d203}Outputs for IfAction SubSystem: '<S4>/Geofencing error' incorporates:
+ *  ActionPort: '<S228>/Action Port'
+ */
+%if SLibCG_SystemFcnArgAccessed("mkh12fremc",7,0)
+%<SLibCG_AccessArg(4 ,4, 0)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("mkh12fremc",7,2)
+%<SLibCG_AccessArg(4 ,4, 6)>
+%endif
+
+%<SLibCGIRGenReusableSysCall("mkh12fremc", ["%<::tSimStruct>", "&flag_outport", "&localP->mkh12fremc3"], 7, 0, 6, 0, 6, 25)>\
+
+
+    /* {E!d203}End of Outputs for SubSystem: '<S4>/Geofencing error' */
+%endif
+} else if ((((real32_T)fabs(dpqnxx3lex->VisionSensors.opticalFlow_data[0]) > localP->CompareToConstant4_const) && ((real32_T)fabs(localP->Gain_Gain_o4gwbrjhx2 * dpqnxx3lex->VisionSensors.opticalFlow_data[0] - localB->n2tsgqseru[0]) > localP->CompareToConstant2_const)) || (((real32_T)fabs(localP->Gain1_Gain_poq4ia0msg * dpqnxx3lex->VisionSensors.opticalFlow_data[1] - localB->n2tsgqseru[1]) > localP->CompareToConstant3_const) && ((real32_T)fabs(dpqnxx3lex->VisionSensors.opticalFlow_data[1]) > localP->CompareToConstant5_const))) {
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[7], "Output",0)
+    /* {S!d205}Outputs for IfAction SubSystem: '<S4>/estimator//Optical flow error' incorporates:
+ *  ActionPort: '<S232>/Action Port'
+ */
+%if SLibCG_SystemFcnArgAccessed("mkh12fremc",7,0)
+%<SLibCG_AccessArg(4 ,4, 0)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("mkh12fremc",7,2)
+%<SLibCG_AccessArg(4 ,4, 6)>
+%endif
+
+%<SLibCGIRGenReusableSysCall("mkh12fremc", ["%<::tSimStruct>", "&flag_outport", "&localP->mui4furwa3"], 7, 1, 6, 0, 6, 25)>\
+
+
+    /* {E!d205}End of Outputs for SubSystem: '<S4>/estimator//Optical flow error' */
+%endif
+} else if (localDW->myqcaypgmg > localP->u0continuousOFerrors_const) {
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[7], "Output",0)
+    /* {S!d207}Outputs for IfAction SubSystem: '<S4>/No optical flow ' incorporates:
+ *  ActionPort: '<S229>/Action Port'
+ */
+%if SLibCG_SystemFcnArgAccessed("mkh12fremc",7,0)
+%<SLibCG_AccessArg(4 ,4, 0)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("mkh12fremc",7,2)
+%<SLibCG_AccessArg(4 ,4, 6)>
+%endif
+
+%<SLibCGIRGenReusableSysCall("mkh12fremc", ["%<::tSimStruct>", "&flag_outport", "&localP->jtkhw0lgkw"], 7, 2, 6, 0, 6, 25)>\
+
+
+    /* {E!d207}End of Outputs for SubSystem: '<S4>/No optical flow ' */
+%endif
+} else {
+    if (d4hayi4src) {
+        /* {S!d586}Switch: '<S4>/         ' incorporates:
+ *  DiscreteFilter: '<S240>/pressureFilter_IIR'
+ *  Sum: '<S4>/Difference between  sonar and pressure'
+ */
+        localB->numAccum = localB->dnazwsvmne - localB->numAccum;
+    } else {
+        /* {S!d588}Switch: '<S4>/         ' incorporates:
+ *  Constant: '<S4>/    '
+ */
+        localB->numAccum = localP->_Value_iigvqrtbvy;
+    }
+    if ((real32_T)fabs(localB->numAccum) > localP->u5meters_Value) {
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[7], "Output",0)
+        /* {S!d209}Outputs for IfAction SubSystem: '<S4>/Ultrasound improper' incorporates:
+ *  ActionPort: '<S231>/Action Port'
+ */
+%if SLibCG_SystemFcnArgAccessed("mkh12fremc",7,0)
+%<SLibCG_AccessArg(4 ,4, 0)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("mkh12fremc",7,2)
+%<SLibCG_AccessArg(4 ,4, 6)>
+%endif
+
+%<SLibCGIRGenReusableSysCall("mkh12fremc", ["%<::tSimStruct>", "&flag_outport", "&localP->bp5djohmz0"], 7, 3, 6, 0, 6, 25)>\
+
+
+        /* {E!d209}End of Outputs for SubSystem: '<S4>/Ultrasound improper' */
+%endif
+    } else {
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[7], "Output",0)
+        /* {S!d211}Outputs for IfAction SubSystem: '<S4>/Normal condition' incorporates:
+ *  ActionPort: '<S230>/Action Port'
+ */
+%if SLibCG_SystemFcnArgAccessed("mkh12fremc",7,0)
+%<SLibCG_AccessArg(4 ,4, 0)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("mkh12fremc",7,2)
+%<SLibCG_AccessArg(4 ,4, 6)>
+%endif
+
+%<SLibCGIRGenReusableSysCall("mkh12fremc", ["%<::tSimStruct>", "&flag_outport", "&localP->edmf1x5ofn"], 7, 4, 6, 0, 6, 25)>\
+
+
+        /* {E!d211}End of Outputs for SubSystem: '<S4>/Normal condition' */
+%endif
+    }
+}
+/* {E!d590}End of If: '<S4>/If' */
+
+/* {S!d592}Sum: '<S233>/FixPt Sum1' incorporates:
+ *  Constant: '<S233>/FixPt Constant'
+ *  UnitDelay: '<S227>/Output'
+ */
+localDW->aj2vlvhpfu += localP->FixPtConstant_Value;
+/* {S!d594}Sum: '<S499>/FixPt Sum1' incorporates:
+ *  Constant: '<S499>/FixPt Constant'
+ *  UnitDelay: '<S498>/Output'
+ */
+localDW->dqzlvsxig5 += localP->FixPtConstant_Value_pdn5vk5ols;
+/* {S!d596}Sum: '<S418>/FixPt Sum1' incorporates:
+ *  Constant: '<S418>/FixPt Constant'
+ *  UnitDelay: '<S416>/Output'
+ */
+localDW->e34yfyxvng += localP->FixPtConstant_Value_mmu3lup0zn;
+/* {S!d598}DataTypeConversion: '<S489>/Conversion' incorporates:
+ *  Constant: '<S444>/CovarianceZ'
+ */
+for (localB->i = 0; localB->i < 16; localB->i++) {
+    localB->jfebm1nf1b_mbvzarwird[localB->i] = (real32_T)localP->CovarianceZ_Value[localB->i];
+}
+/* {E!d598}End of DataTypeConversion: '<S489>/Conversion' */
+
+/* {S!d600}MATLAB Function: '<S492>/SqrtUsedFcn' incorporates:
+ *  Constant: '<S492>/isSqrtUsed'
+ *  DataTypeConversion: '<S489>/Conversion'
+ */
+if (localP->isSqrtUsed_Value) {
+    for (localB->j = 0; localB->j < 4; localB->j++) {
+        for (localB->i = 0; localB->i < 4; localB->i++) {
+            localB->f1pagvwlab_cl54gopm0x[localB->j + (localB->i << 2)] = ((localB->jfebm1nf1b_mbvzarwird[localB->j + 4] * localB->jfebm1nf1b_mbvzarwird[localB->i + 4] + localB->jfebm1nf1b_mbvzarwird[localB->j] * localB->jfebm1nf1b_mbvzarwird[localB->i]) + localB->jfebm1nf1b_mbvzarwird[localB->j + 8] * localB->jfebm1nf1b_mbvzarwird[localB->i + 8]) + localB->jfebm1nf1b_mbvzarwird[localB->j + 12] * localB->jfebm1nf1b_mbvzarwird[localB->i + 12];
+        }
+    }
+} else {
+    for (localB->j = 0; localB->j < 4; localB->j++) {
+        for (localB->i = 0; localB->i < 4; localB->i++) {
+            localB->f1pagvwlab_cl54gopm0x[localB->j + (localB->i << 2)] = localB->jfebm1nf1b_mbvzarwird[(localB->i << 2) + localB->j];
+        }
+    }
+}
+/* {E!d600}End of MATLAB Function: '<S492>/SqrtUsedFcn' */
+
+/* {S!d602}MATLAB Function: '<S289>/SqrtUsedFcn' incorporates:
+ *  Constant: '<S243>/CovarianceZ'
+ *  Constant: '<S289>/isSqrtUsed'
+ */
+if (localP->isSqrtUsed_Value_ayya5glmgw) {
+    for (localB->j = 0; localB->j < 2; localB->j++) {
+        localB->afiouwlyig_jwzvbuczlb = localP->CovarianceZ_Value_bvnqeaggu2[localB->j + 2];
+        localB->necjov1dte_cv5hdgrwft[localB->j] = localB->afiouwlyig_jwzvbuczlb * localP->CovarianceZ_Value_bvnqeaggu2[2] + localP->CovarianceZ_Value_bvnqeaggu2[localB->j] * localP->CovarianceZ_Value_bvnqeaggu2[0];
+        localB->necjov1dte_cv5hdgrwft[localB->j + 2] = localB->afiouwlyig_jwzvbuczlb * localP->CovarianceZ_Value_bvnqeaggu2[3] + localP->CovarianceZ_Value_bvnqeaggu2[localB->j] * localP->CovarianceZ_Value_bvnqeaggu2[1];
+    }
+} else {
+    for (localB->j = 0; localB->j < 2; localB->j++) {
+        localB->necjov1dte_cv5hdgrwft[localB->j] = localP->CovarianceZ_Value_bvnqeaggu2[localB->j];
+        localB->necjov1dte_cv5hdgrwft[localB->j + 2] = localP->CovarianceZ_Value_bvnqeaggu2[localB->j + 2];
+    }
+}
+/* {E!d602}End of MATLAB Function: '<S289>/SqrtUsedFcn' */
+
+/* {S!d604}DataTypeConversion: '<S351>/Conversion' incorporates:
+ *  Constant: '<S306>/CovarianceZ'
+ */
+localB->lvknz4vnpe_g1smspu5ke[0] = (real32_T)localP->CovarianceZ_Value_bpspmajp05[0];
+localB->lvknz4vnpe_g1smspu5ke[1] = (real32_T)localP->CovarianceZ_Value_bpspmajp05[1];
+localB->lvknz4vnpe_g1smspu5ke[2] = (real32_T)localP->CovarianceZ_Value_bpspmajp05[2];
+localB->lvknz4vnpe_g1smspu5ke[3] = (real32_T)localP->CovarianceZ_Value_bpspmajp05[3];
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[15], "Output",0)
+/* {S!d606}MATLAB Function: '<S354>/SqrtUsedFcn' incorporates:
+ *  Constant: '<S354>/isSqrtUsed'
+ */
+%if SLibCG_SystemFcnArgAccessed("nywkshxzsg",15,0)
+%<SLibCG_AccessArg(4 ,4, 0)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("nywkshxzsg",15,1)
+%<SLibCG_AccessArg(4 ,4, 4)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("nywkshxzsg",15,2)
+%<SLibCG_AccessArg(4 ,4, 6)>
+%endif
+
+%<SLibCGIRGenReusableSysCall("nywkshxzsg", ["%<::tSimStruct>", "localB->lvknz4vnpe_g1smspu5ke", "localP->isSqrtUsed_Value_fyzj4vw30p"], 15, 0, 6, 0, 6, 25)>\
+
+
+%endif
+/* {S!d608}DataTypeConversion: '<S405>/Conversion' incorporates:
+ *  Constant: '<S360>/CovarianceZ'
+ */
+localB->llm14qo5kt_merlcviukg[0] = (real32_T)localP->CovarianceZ_Value_ms5vxcmax5[0];
+localB->llm14qo5kt_merlcviukg[1] = (real32_T)localP->CovarianceZ_Value_ms5vxcmax5[1];
+localB->llm14qo5kt_merlcviukg[2] = (real32_T)localP->CovarianceZ_Value_ms5vxcmax5[2];
+localB->llm14qo5kt_merlcviukg[3] = (real32_T)localP->CovarianceZ_Value_ms5vxcmax5[3];
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[15], "Output",0)
+/* {S!d610}MATLAB Function: '<S408>/SqrtUsedFcn' incorporates:
+ *  Constant: '<S408>/isSqrtUsed'
+ */
+%if SLibCG_SystemFcnArgAccessed("nywkshxzsg",15,0)
+%<SLibCG_AccessArg(4 ,4, 0)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("nywkshxzsg",15,1)
+%<SLibCG_AccessArg(4 ,4, 4)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("nywkshxzsg",15,2)
+%<SLibCG_AccessArg(4 ,4, 6)>
+%endif
+
+%<SLibCGIRGenReusableSysCall("nywkshxzsg", ["%<::tSimStruct>", "localB->llm14qo5kt_merlcviukg", "localP->isSqrtUsed_Value_je3jzvvebq"], 15, 1, 6, 0, 6, 25)>\
+
+
+%endif
+/* {S!d612}Constant: '<S5>/zValue' */
+localB->oxqu2krqxm_dhmrxtyqop = localP->zValue_Value;
+/* {S!d614}SignalConversion generated from: '<S421>/Product' */
+localB->numAccum = localB->n2tsgqseru[0];
+localB->d3uu2vuvm3_tmp = localB->n2tsgqseru[1];
+/* {S!d616}Product: '<S421>/Product' incorporates:
+ *  Math: '<S421>/Math Function'
+ *  SignalConversion generated from: '<S421>/Product'
+ */
+for (localB->j = 0; localB->j < 3; localB->j++) {
+    localB->k31ssxc4ec_nz4o0shxby[localB->j] = localB->gwq0iv103m_bhxxfovxdy[localB->j + 6] * localB->j3gikbjvns + (localB->gwq0iv103m_bhxxfovxdy[localB->j + 3] * localB->d3uu2vuvm3_tmp + localB->gwq0iv103m_bhxxfovxdy[localB->j] * localB->numAccum);
+}
+/* {E!d616}End of Product: '<S421>/Product' */
+
+/* {S!d618}Update for DiscreteIntegrator: '<S421>/SimplyIntegrateVelocity' incorporates:
+ *  Constant: '<S1>/controlModePosVsOrient'
+ */
+localDW->nvlnzfl5aj = (int8_T)localP->controlModePosVsOrient_Value;
+/* {S!d620}Update for Delay: '<S239>/MemoryX' */
+localDW->p21jfteabq = false;
+/* {S!d622}Update for DiscreteIntegrator: '<S421>/SimplyIntegrateVelocity' */
+localDW->jkzxf325k4[0] += localP->SimplyIntegrateVelocity_gainval * localB->k31ssxc4ec_nz4o0shxby[0];
+/* {S!d624}Product: '<S261>/A[k]*xhat[k|k-1]' incorporates:
+ *  Constant: '<S239>/A'
+ *  Delay: '<S239>/MemoryX'
+ */
+localB->unnamed_idx_0 = localP->A_Value[0] * localDW->glnxqugnfv[0] + localDW->glnxqugnfv[1] * localP->A_Value[2];
+/* {S!d626}Update for DiscreteIntegrator: '<S421>/SimplyIntegrateVelocity' */
+localDW->jkzxf325k4[1] += localP->SimplyIntegrateVelocity_gainval * localB->k31ssxc4ec_nz4o0shxby[1];
+/* {S!d628}Product: '<S261>/A[k]*xhat[k|k-1]' incorporates:
+ *  Constant: '<S239>/A'
+ *  Delay: '<S239>/MemoryX'
+ */
+localB->unnamed_idx_1 = localDW->glnxqugnfv[0] * localP->A_Value[1] + localDW->glnxqugnfv[1] * localP->A_Value[3];
+/* {S!d630}Update for Delay: '<S239>/MemoryX' incorporates:
+ *  Constant: '<S239>/B'
+ *  Product: '<S261>/B[k]*u[k]'
+ *  Product: '<S291>/Product3'
+ *  Reshape: '<S239>/Reshapeu'
+ *  Sum: '<S261>/Add'
+ */
+localDW->glnxqugnfv[0] = (localP->B_Value[0] * localB->dephasaxdc[2] + localB->unnamed_idx_0) + localB->jcydcfokrq[0];
+/* {S!d632}Update for DiscreteFilter: '<S240>/pressureFilter_IIR' */
+localDW->bdtll520oe[2] = localDW->bdtll520oe[1];
+/* {S!d634}Update for DiscreteFilter: '<S240>/sonarFilter_IIR' */
+localDW->n4c02ccmvw[2] = localDW->n4c02ccmvw[1];
+/* {S!d636}Update for Delay: '<S239>/MemoryX' incorporates:
+ *  Constant: '<S239>/B'
+ *  Product: '<S261>/B[k]*u[k]'
+ *  Product: '<S291>/Product3'
+ *  Reshape: '<S239>/Reshapeu'
+ *  Sum: '<S261>/Add'
+ */
+localDW->glnxqugnfv[1] = (localP->B_Value[1] * localB->dephasaxdc[2] + localB->unnamed_idx_1) + localB->jcydcfokrq[1];
+/* {S!d638}Update for DiscreteFilter: '<S240>/pressureFilter_IIR' */
+localDW->bdtll520oe[1] = localDW->bdtll520oe[0];
+/* {S!d640}Update for DiscreteFilter: '<S240>/sonarFilter_IIR' */
+localDW->n4c02ccmvw[1] = localDW->n4c02ccmvw[0];
+/* {S!d642}Update for DiscreteFilter: '<S240>/pressureFilter_IIR' */
+localDW->bdtll520oe[0] = localB->ec1ck2awjx;
+/* {S!d644}Update for DiscreteFilter: '<S240>/sonarFilter_IIR' */
+localDW->n4c02ccmvw[0] = localB->h1qcjoemma;
+/* {S!d646}Update for DiscreteIntegrator: '<S303>/Discrete-Time Integrator' */
+localDW->pwshjzhr55 += localP->DiscreteTimeIntegrator_gainval * localB->hz25zcfjyj_bnlywzniup;
+/* {S!d648}Update for Delay: '<S305>/MemoryX' incorporates:
+ *  Constant: '<S305>/A'
+ *  Constant: '<S305>/B'
+ *  Product: '<S325>/A[k]*xhat[k|k-1]'
+ *  Product: '<S325>/B[k]*u[k]'
+ *  Product: '<S356>/Product3'
+ *  Sum: '<S325>/Add'
+ */
+localDW->jjttlxirju = false;
+localDW->nyjef1ycyg[0] = ((localP->A_Value_kpkzmmvck4[0] * localB->nslh4ab04o_hv2ho1zopz[0] + localB->nslh4ab04o_hv2ho1zopz[1] * localP->A_Value_kpkzmmvck4[2]) + localP->B_Value_oupiwz53ke[0] * kpxdy2hldb) + localB->ftjpp1i1nwt.fd4g40ws5p[0];
+localDW->nyjef1ycyg[1] = ((localB->nslh4ab04o_hv2ho1zopz[0] * localP->A_Value_kpkzmmvck4[1] + localB->nslh4ab04o_hv2ho1zopz[1] * localP->A_Value_kpkzmmvck4[3]) + localP->B_Value_oupiwz53ke[1] * kpxdy2hldb) + localB->ftjpp1i1nwt.fd4g40ws5p[1];
+/* {S!d650}Update for DiscreteFir: '<S237>/FIR_IMUaccel' */
+/* Update circular buffer index */
+localDW->iyk1p23sk3--;
+if (localDW->iyk1p23sk3 < 0) {
+    localDW->iyk1p23sk3 = 4;
+}
+/* Update circular buffer */
+localDW->g3y2exu1od[localDW->iyk1p23sk3] = localB->hjq3spfnkl[0];
+localDW->g3y2exu1od[localDW->iyk1p23sk3 + 5] = localB->hjq3spfnkl[1];
+localDW->g3y2exu1od[localDW->iyk1p23sk3 + 10] = localB->hjq3spfnkl[2];
+/* {E!d650}End of Update for DiscreteFir: '<S237>/FIR_IMUaccel' */
+
+/* {S!d652}Update for Delay: '<S359>/MemoryX' incorporates:
+ *  Constant: '<S359>/A'
+ *  Constant: '<S359>/B'
+ *  Product: '<S379>/A[k]*xhat[k|k-1]'
+ *  Product: '<S379>/B[k]*u[k]'
+ *  Product: '<S410>/Product3'
+ *  Sum: '<S379>/Add'
+ */
+localDW->bofwvja4x2 = false;
+localDW->igdo3uvfy5[0] = ((localP->A_Value_ahq1egpklt[0] * localB->aowctvfu5g_bsqwvugooi[0] + localB->aowctvfu5g_bsqwvugooi[1] * localP->A_Value_ahq1egpklt[2]) + localP->B_Value_gewxjxqwgp[0] * c4pr3d2xvj) + localB->ieoyjrjufk.fd4g40ws5p[0];
+localDW->igdo3uvfy5[1] = ((localB->aowctvfu5g_bsqwvugooi[0] * localP->A_Value_ahq1egpklt[1] + localB->aowctvfu5g_bsqwvugooi[1] * localP->A_Value_ahq1egpklt[3]) + localP->B_Value_gewxjxqwgp[1] * c4pr3d2xvj) + localB->ieoyjrjufk.fd4g40ws5p[1];
+/* {S!d654}Update for DiscreteTransferFcn: '<S237>/LPF Fcutoff = 40Hz1' */
+localDW->bxz11ul2qv = localB->g0v50l3nug;
+/* {S!d656}Update for DiscreteTransferFcn: '<S237>/LPF Fcutoff = 40Hz' */
+localDW->ah0gcg1hha = localB->d5ebcbqinr;
+/* {S!d658}Update for DiscreteFilter: '<S237>/IIR_IMUgyro_r' */
+localDW->brphiodnrc[4] = localDW->brphiodnrc[3];
+localDW->brphiodnrc[3] = localDW->brphiodnrc[2];
+localDW->brphiodnrc[2] = localDW->brphiodnrc[1];
+localDW->brphiodnrc[1] = localDW->brphiodnrc[0];
+localDW->brphiodnrc[0] = localB->leteup22ga;
+/* {S!d662}Switch: '<S419>/FixPt Switch' */
+if (localDW->e34yfyxvng > localP->WrapToZero_Threshold_eztyhrsd23) {
+    /* {S!d660}Sum: '<S418>/FixPt Sum1' incorporates:
+ *  Constant: '<S419>/Constant'
+ *  UnitDelay: '<S416>/Output'
+ */
+    localDW->e34yfyxvng = localP->Constant_Value_jygluzzgcj;
+}
+/* {E!d662}End of Switch: '<S419>/FixPt Switch' */
+
+/* {S!d664}Update for Delay: '<S425>/MemoryX' */
+localDW->kz35mo0sw4 = false;
+for (localB->j = 0; localB->j < 4; localB->j++) {
+    /* {S!d666}Product: '<S463>/B[k]*u[k]' incorporates:
+ *  Constant: '<S425>/B'
+ *  Reshape: '<S425>/Reshapeu'
+ */
+    localB->fv[localB->j] = localP->B_Value_fiwsw45qg3[localB->j + 4] * localB->j4f4ocvklu[1] + localP->B_Value_fiwsw45qg3[localB->j] * localB->j4f4ocvklu[0];
+    /* {S!d668}Product: '<S463>/A[k]*xhat[k|k-1]' incorporates:
+ *  Constant: '<S425>/A'
+ *  Delay: '<S425>/MemoryX'
+ */
+    localB->fv1[localB->j] = localP->A_Value_a4ccttduli[localB->j + 12] * localDW->coz3ppgkas[3] + (localP->A_Value_a4ccttduli[localB->j + 8] * localDW->coz3ppgkas[2] + (localP->A_Value_a4ccttduli[localB->j + 4] * localDW->coz3ppgkas[1] + localP->A_Value_a4ccttduli[localB->j] * localDW->coz3ppgkas[0]));
+}
+/* {S!d670}Update for Delay: '<S425>/MemoryX' incorporates:
+ *  Sum: '<S463>/Add'
+ */
+localDW->coz3ppgkas[0] = (localB->fv[0] + localB->fv1[0]) + localB->ipfvwleu0r[0];
+localDW->coz3ppgkas[1] = (localB->fv[1] + localB->fv1[1]) + localB->ipfvwleu0r[1];
+localDW->coz3ppgkas[2] = (localB->fv[2] + localB->fv1[2]) + localB->ipfvwleu0r[2];
+localDW->coz3ppgkas[3] = (localB->fv[3] + localB->fv1[3]) + localB->ipfvwleu0r[3];
+/* {S!d674}Switch: '<S500>/FixPt Switch' */
+if (localDW->dqzlvsxig5 > localP->WrapToZero_Threshold_kl5sqi5005) {
+    /* {S!d672}Sum: '<S499>/FixPt Sum1' incorporates:
+ *  Constant: '<S500>/Constant'
+ *  UnitDelay: '<S498>/Output'
+ */
+    localDW->dqzlvsxig5 = localP->Constant_Value_egj0ugy2nx;
+}
+/* {E!d674}End of Switch: '<S500>/FixPt Switch' */
+for (localB->j = 0; localB->j < 2; localB->j++) {
+    /* {S!d676}Update for DiscreteFilter: '<S424>/IIRgyroz' */
+    localB->memOffset = localB->j * 5;
+    localDW->dd2ozag2ww[localB->memOffset + 4] = localDW->dd2ozag2ww[localB->memOffset + 3];
+    localDW->dd2ozag2ww[localB->memOffset + 3] = localDW->dd2ozag2ww[localB->memOffset + 2];
+    localDW->dd2ozag2ww[localB->memOffset + 2] = localDW->dd2ozag2ww[localB->memOffset + 1];
+    localDW->dd2ozag2ww[localB->memOffset + 1] = localDW->dd2ozag2ww[localB->memOffset];
+    localDW->dd2ozag2ww[localB->memOffset] = localDW->lopel0ovxm[localB->j];
+    /* {S!d678}Update for UnitDelay: '<S432>/UD' */
+    localDW->bwea4hxqvk[localB->j] = localB->aqof5fq24y_dhamdvybc1[localB->j];
+    /* {S!d680}Update for Delay: '<S420>/Delay' */
+    localDW->bs11adx5jj[localB->j] = localB->n2tsgqseru[localB->j];
+    /* {S!d682}Update for Delay: '<S6>/Delay1' */
+    localDW->joy12tk1bf[localB->j] = localB->n2tsgqseru[localB->j];
+}
+/* {S!d686}Switch: '<S16>/FixPt Switch' */
+if (localDW->lsa3afmpix > localP->WrapToZero_Threshold_cr3kvuryhj) {
+    /* {S!d684}Sum: '<S15>/FixPt Sum1' incorporates:
+ *  Constant: '<S16>/Constant'
+ *  UnitDelay: '<S14>/Output'
+ */
+    localDW->lsa3afmpix = localP->Constant_Value_k110f2qigc;
+}
+/* {E!d686}End of Switch: '<S16>/FixPt Switch' */
+
+/* {S!d688}Update for DiscreteIntegrator: '<S7>/Discrete-Time Integrator' incorporates:
+ *  BusAssignment: '<S5>/Bus  Assignment'
+ *  Gain: '<S7>/I_pr'
+ *  Sum: '<S7>/Sum2'
+ */
+localDW->be2vxxi4ie += (0.0F - localB->dnazwsvmne) * localP->I_pr_Gain * localP->DiscreteTimeIntegrator_gainval_n1s1zttthw;
+if (localDW->be2vxxi4ie >= localP->DiscreteTimeIntegrator_UpperSat) {
+    localDW->be2vxxi4ie = localP->DiscreteTimeIntegrator_UpperSat;
+} else if (localDW->be2vxxi4ie <= localP->DiscreteTimeIntegrator_LowerSat) {
+    localDW->be2vxxi4ie = localP->DiscreteTimeIntegrator_LowerSat;
+}
+localDW->gqvj2g0c4y = (int8_T)fxb4stm2ms;
+/* {E!d688}End of Update for DiscreteIntegrator: '<S7>/Discrete-Time Integrator' */
+
+/* {S!d690}Signum: '<S193>/SignPreSat' incorporates:
+ *  DiscreteIntegrator: '<S202>/Integrator'
+ *  RelationalOperator: '<S193>/NotEqual'
+ */
+if (localB->nco2wgzik0_ldqodwenvz[0] < 0.0F) {
+    localB->ec1ck2awjx = -1.0F;
+} else if (localB->nco2wgzik0_ldqodwenvz[0] > 0.0F) {
+    localB->ec1ck2awjx = 1.0F;
+} else if (localB->nco2wgzik0_ldqodwenvz[0] == 0.0F) {
+    localB->ec1ck2awjx = 0.0F;
+} else {
+    localB->ec1ck2awjx = %<LibGetMathConstant(LibRealNonFinite("nan"), FcnGetDataTypeIdFromName("single"))>;
+}
+/* {S!d692}DataTypeConversion: '<S193>/DataTypeConv1' */
+if (rtIsNaNF(localB->ec1ck2awjx)) {
+    localB->d3uu2vuvm3_tmp = 0.0F;
+} else {
+    localB->d3uu2vuvm3_tmp = (real32_T)fmod(localB->ec1ck2awjx, 256.0);
+}
+/* {S!d694}Signum: '<S193>/SignPreIntegrator' */
+if (localB->grmb2sj2e5_idx_1 < 0.0F) {
+    localB->ec1ck2awjx = -1.0F;
+} else if (localB->grmb2sj2e5_idx_1 > 0.0F) {
+    localB->ec1ck2awjx = 1.0F;
+} else if (localB->grmb2sj2e5_idx_1 == 0.0F) {
+    localB->ec1ck2awjx = 0.0F;
+} else {
+    localB->ec1ck2awjx = %<LibGetMathConstant(LibRealNonFinite("nan"), FcnGetDataTypeIdFromName("single"))>;
+}
+/* {S!d696}DataTypeConversion: '<S193>/DataTypeConv2' */
+if (rtIsNaNF(localB->ec1ck2awjx)) {
+    localB->ec1ck2awjx = 0.0F;
+} else {
+    localB->ec1ck2awjx = (real32_T)fmod(localB->ec1ck2awjx, 256.0);
+}
+/* {S!d698}Switch: '<S193>/Switch' incorporates:
+ *  Constant: '<S193>/Constant1'
+ *  DataTypeConversion: '<S193>/DataTypeConv1'
+ *  DataTypeConversion: '<S193>/DataTypeConv2'
+ *  Logic: '<S193>/AND3'
+ *  RelationalOperator: '<S193>/Equal1'
+ *  RelationalOperator: '<S193>/NotEqual'
+ */
+if ((localB->grmb2sj2e5_idx_0 != localB->denAccum) && ((localB->d3uu2vuvm3_tmp < 0.0F ? (int32_T)(int8_T)-(int8_T)(uint8_T)-localB->d3uu2vuvm3_tmp : (int32_T)(int8_T)(uint8_T)localB->d3uu2vuvm3_tmp) == (localB->ec1ck2awjx < 0.0F ? (int32_T)(int8_T)-(int8_T)(uint8_T)-localB->ec1ck2awjx : (int32_T)(int8_T)(uint8_T)localB->ec1ck2awjx))) {
+    localB->grmb2sj2e5_idx_1 = localP->Constant1_Value_culvk2wrcu;
+}
+/* {S!d700}Update for DiscreteIntegrator: '<S202>/Integrator' */
+localDW->mjn5ntnu3u[0] += localP->Integrator_gainval * localB->grmb2sj2e5_idx_1;
+/* {S!d702}Update for DiscreteTransferFcn: '<S10>/LPF 8Hz Cutoff Filter to avoid oscillations  induced by position controller' */
+localDW->dgkpnfrv5d[0] = localDW->fuognokydi[0];
+/* {S!d704}Signum: '<S91>/SignPreSat' */
+if (localB->acc1 < 0.0F) {
+    localB->ec1ck2awjx = -1.0F;
+} else if (localB->acc1 > 0.0F) {
+    localB->ec1ck2awjx = 1.0F;
+} else if (localB->acc1 == 0.0F) {
+    localB->ec1ck2awjx = 0.0F;
+} else {
+    localB->ec1ck2awjx = %<LibGetMathConstant(LibRealNonFinite("nan"), FcnGetDataTypeIdFromName("single"))>;
+}
+/* {S!d706}DataTypeConversion: '<S91>/DataTypeConv1' */
+if (rtIsNaNF(localB->ec1ck2awjx)) {
+    localB->d3uu2vuvm3_tmp = 0.0F;
+} else {
+    localB->d3uu2vuvm3_tmp = (real32_T)fmod(localB->ec1ck2awjx, 256.0);
+}
+/* {S!d708}Signum: '<S91>/SignPreIntegrator' */
+if (localB->jis5apiwbt_idx_0 < 0.0F) {
+    localB->ec1ck2awjx = -1.0F;
+} else if (localB->jis5apiwbt_idx_0 > 0.0F) {
+    localB->ec1ck2awjx = 1.0F;
+} else if (localB->jis5apiwbt_idx_0 == 0.0F) {
+    localB->ec1ck2awjx = 0.0F;
+} else {
+    localB->ec1ck2awjx = %<LibGetMathConstant(LibRealNonFinite("nan"), FcnGetDataTypeIdFromName("single"))>;
+}
+/* {S!d710}DataTypeConversion: '<S91>/DataTypeConv2' */
+if (rtIsNaNF(localB->ec1ck2awjx)) {
+    localB->ec1ck2awjx = 0.0F;
+} else {
+    localB->ec1ck2awjx = (real32_T)fmod(localB->ec1ck2awjx, 256.0);
+}
+/* {S!d712}Switch: '<S91>/Switch' incorporates:
+ *  Constant: '<S91>/Constant1'
+ *  DataTypeConversion: '<S91>/DataTypeConv1'
+ *  DataTypeConversion: '<S91>/DataTypeConv2'
+ *  Gain: '<S91>/ZeroGain'
+ *  Logic: '<S91>/AND3'
+ *  RelationalOperator: '<S91>/Equal1'
+ *  RelationalOperator: '<S91>/NotEqual'
+ */
+if ((localP->ZeroGain_Gain * localB->a5giso52ti_idx_0 != localB->acc1) && ((localB->d3uu2vuvm3_tmp < 0.0F ? (int32_T)(int8_T)-(int8_T)(uint8_T)-localB->d3uu2vuvm3_tmp : (int32_T)(int8_T)(uint8_T)localB->d3uu2vuvm3_tmp) == (localB->ec1ck2awjx < 0.0F ? (int32_T)(int8_T)-(int8_T)(uint8_T)-localB->ec1ck2awjx : (int32_T)(int8_T)(uint8_T)localB->ec1ck2awjx))) {
+    localB->jis5apiwbt_idx_0 = localP->Constant1_Value;
+}
+/* {S!d714}Update for DiscreteIntegrator: '<S100>/Integrator' */
+localDW->mwpgqzgixr[0] += localP->Integrator_gainval_ibyi5xndh1 * localB->jis5apiwbt_idx_0;
+/* {S!d716}Update for DiscreteIntegrator: '<S95>/Filter' */
+localDW->i2bolv3wez[0] += localP->Filter_gainval * localB->nv4htcsfja_idx_0;
+/* {S!d718}Signum: '<S193>/SignPreSat' incorporates:
+ *  DiscreteIntegrator: '<S202>/Integrator'
+ *  RelationalOperator: '<S193>/NotEqual'
+ */
+if (localB->nco2wgzik0_ldqodwenvz[1] < 0.0F) {
+    localB->ec1ck2awjx = -1.0F;
+} else if (localB->nco2wgzik0_ldqodwenvz[1] > 0.0F) {
+    localB->ec1ck2awjx = 1.0F;
+} else if (localB->nco2wgzik0_ldqodwenvz[1] == 0.0F) {
+    localB->ec1ck2awjx = 0.0F;
+} else {
+    localB->ec1ck2awjx = %<LibGetMathConstant(LibRealNonFinite("nan"), FcnGetDataTypeIdFromName("single"))>;
+}
+/* {S!d720}DataTypeConversion: '<S193>/DataTypeConv1' */
+if (rtIsNaNF(localB->ec1ck2awjx)) {
+    localB->d3uu2vuvm3_tmp = 0.0F;
+} else {
+    localB->d3uu2vuvm3_tmp = (real32_T)fmod(localB->ec1ck2awjx, 256.0);
+}
+/* {S!d722}Signum: '<S193>/SignPreIntegrator' incorporates:
+ *  Gain: '<S199>/Integral Gain'
+ */
+if (d3uu2vuvm3_tmp < 0.0F) {
+    localB->ec1ck2awjx = -1.0F;
+} else if (d3uu2vuvm3_tmp > 0.0F) {
+    localB->ec1ck2awjx = 1.0F;
+} else if (d3uu2vuvm3_tmp == 0.0F) {
+    localB->ec1ck2awjx = 0.0F;
+} else {
+    localB->ec1ck2awjx = %<LibGetMathConstant(LibRealNonFinite("nan"), FcnGetDataTypeIdFromName("single"))>;
+}
+/* {S!d724}DataTypeConversion: '<S193>/DataTypeConv2' */
+if (rtIsNaNF(localB->ec1ck2awjx)) {
+    localB->ec1ck2awjx = 0.0F;
+} else {
+    localB->ec1ck2awjx = (real32_T)fmod(localB->ec1ck2awjx, 256.0);
+}
+/* {S!d726}DeadZone: '<S195>/DeadZone' */
+if (localB->iqp3neo1wg_dapv3jlyq5 > localP->Velocitycontroller_UpperSaturationLimit) {
+    localB->denAccum = localB->iqp3neo1wg_dapv3jlyq5 - localP->Velocitycontroller_UpperSaturationLimit;
+} else if (localB->iqp3neo1wg_dapv3jlyq5 >= localP->Velocitycontroller_LowerSaturationLimit) {
+    localB->denAccum = 0.0F;
+} else {
+    localB->denAccum = localB->iqp3neo1wg_dapv3jlyq5 - localP->Velocitycontroller_LowerSaturationLimit;
+}
+/* {S!d728}Switch: '<S193>/Switch' incorporates:
+ *  Constant: '<S193>/Constant1'
+ *  DataTypeConversion: '<S193>/DataTypeConv1'
+ *  DataTypeConversion: '<S193>/DataTypeConv2'
+ *  Gain: '<S193>/ZeroGain'
+ *  Logic: '<S193>/AND3'
+ *  RelationalOperator: '<S193>/Equal1'
+ *  RelationalOperator: '<S193>/NotEqual'
+ */
+if ((localP->ZeroGain_Gain_enbc23v5lc * localB->iqp3neo1wg_dapv3jlyq5 != localB->denAccum) && ((localB->d3uu2vuvm3_tmp < 0.0F ? (int32_T)(int8_T)-(int8_T)(uint8_T)-localB->d3uu2vuvm3_tmp : (int32_T)(int8_T)(uint8_T)localB->d3uu2vuvm3_tmp) == (localB->ec1ck2awjx < 0.0F ? (int32_T)(int8_T)-(int8_T)(uint8_T)-localB->ec1ck2awjx : (int32_T)(int8_T)(uint8_T)localB->ec1ck2awjx))) {
+    d3uu2vuvm3_tmp = localP->Constant1_Value_culvk2wrcu;
+}
+/* {S!d730}Update for DiscreteIntegrator: '<S202>/Integrator' */
+localDW->mjn5ntnu3u[1] += localP->Integrator_gainval * d3uu2vuvm3_tmp;
+/* {S!d732}Update for DiscreteTransferFcn: '<S10>/LPF 8Hz Cutoff Filter to avoid oscillations  induced by position controller' */
+localDW->dgkpnfrv5d[1] = localDW->fuognokydi[1];
+/* {S!d734}Signum: '<S91>/SignPreSat' */
+if (d3uu2vuvm3_tmp_p < 0.0F) {
+    localB->ec1ck2awjx = -1.0F;
+} else if (d3uu2vuvm3_tmp_p > 0.0F) {
+    localB->ec1ck2awjx = 1.0F;
+} else if (d3uu2vuvm3_tmp_p == 0.0F) {
+    localB->ec1ck2awjx = 0.0F;
+} else {
+    localB->ec1ck2awjx = %<LibGetMathConstant(LibRealNonFinite("nan"), FcnGetDataTypeIdFromName("single"))>;
+}
+/* {S!d736}DataTypeConversion: '<S91>/DataTypeConv1' */
+if (rtIsNaNF(localB->ec1ck2awjx)) {
+    localB->d3uu2vuvm3_tmp = 0.0F;
+} else {
+    localB->d3uu2vuvm3_tmp = (real32_T)fmod(localB->ec1ck2awjx, 256.0);
+}
+/* {S!d738}Signum: '<S91>/SignPreIntegrator' */
+if (localB->jis5apiwbt_idx_1 < 0.0F) {
+    localB->ec1ck2awjx = -1.0F;
+} else if (localB->jis5apiwbt_idx_1 > 0.0F) {
+    localB->ec1ck2awjx = 1.0F;
+} else if (localB->jis5apiwbt_idx_1 == 0.0F) {
+    localB->ec1ck2awjx = 0.0F;
+} else {
+    localB->ec1ck2awjx = %<LibGetMathConstant(LibRealNonFinite("nan"), FcnGetDataTypeIdFromName("single"))>;
+}
+/* {S!d740}DataTypeConversion: '<S91>/DataTypeConv2' */
+if (rtIsNaNF(localB->ec1ck2awjx)) {
+    localB->ec1ck2awjx = 0.0F;
+} else {
+    localB->ec1ck2awjx = (real32_T)fmod(localB->ec1ck2awjx, 256.0);
+}
+/* {S!d742}Switch: '<S91>/Switch' incorporates:
+ *  Constant: '<S91>/Constant1'
+ *  DataTypeConversion: '<S91>/DataTypeConv1'
+ *  DataTypeConversion: '<S91>/DataTypeConv2'
+ *  Gain: '<S91>/ZeroGain'
+ *  Logic: '<S91>/AND3'
+ *  RelationalOperator: '<S91>/Equal1'
+ *  RelationalOperator: '<S91>/NotEqual'
+ */
+if ((localP->ZeroGain_Gain * localB->pfrm53noc2_idx_0_tmp != d3uu2vuvm3_tmp_p) && ((localB->d3uu2vuvm3_tmp < 0.0F ? (int32_T)(int8_T)-(int8_T)(uint8_T)-localB->d3uu2vuvm3_tmp : (int32_T)(int8_T)(uint8_T)localB->d3uu2vuvm3_tmp) == (localB->ec1ck2awjx < 0.0F ? (int32_T)(int8_T)-(int8_T)(uint8_T)-localB->ec1ck2awjx : (int32_T)(int8_T)(uint8_T)localB->ec1ck2awjx))) {
+    localB->jis5apiwbt_idx_1 = localP->Constant1_Value;
+}
+/* {S!d744}Update for DiscreteIntegrator: '<S100>/Integrator' */
+localDW->mwpgqzgixr[1] += localP->Integrator_gainval_ibyi5xndh1 * localB->jis5apiwbt_idx_1;
+/* {S!d746}Update for DiscreteIntegrator: '<S95>/Filter' */
+localDW->i2bolv3wez[1] += localP->Filter_gainval * localB->gllpmqmq54_idx_0_tmp;
+/* {S!d748}Update for DiscreteIntegrator: '<S11>/Discrete-Time Integrator' incorporates:
+ *  Gain: '<S11>/I_yaw'
+ */
+localDW->m4so224kut += localP->I_yaw_Gain * localB->hjdxkyvxxx_ezqlmfzvpq * localP->DiscreteTimeIntegrator_gainval_dyqerpyjtp;
+/* {S!d752}Switch: '<S234>/FixPt Switch' */
+if (localDW->aj2vlvhpfu > localP->WrapToZero_Threshold) {
+    /* {S!d750}Sum: '<S233>/FixPt Sum1' incorporates:
+ *  Constant: '<S234>/Constant'
+ *  UnitDelay: '<S227>/Output'
+ */
+    localDW->aj2vlvhpfu = localP->Constant_Value_a30z1ihgak;
+}
+/* {E!d752}End of Switch: '<S234>/FixPt Switch' */
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[4].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Output", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))
+%<SLibCG_AccessArg(4, 4, 0)>
+%endif
+%if SLibCG_ArgAccessed(4, 4, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Output", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Output"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(4, 4, 0)>
+%endif
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void fxgka2mnes(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(4, 4, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("fxgka2mnes", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>const CommandBus *g2xk5241hz\
+%assign comma = ", "
+%<comma>const SensorsBus *dpqnxx3lex\
+%assign comma = ", "
+%<comma>boolean_T n54bigp0ba\
+%assign comma = ", "
+%<comma>hs5rkaddlu *localB\
+%assign comma = ", "
+%<comma>b4hzi5kh0b *localDW\
+%assign comma = ", "
+%<comma>fmp1yi05qu *localP\
+%assign comma = ", "
+%<comma>bby21fgmrk *localZCE\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(4, 4, fcnProtoType)>
+%endfunction

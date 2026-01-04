@@ -1,0 +1,52 @@
+%implements s35_b0_1q94f_SystemInitialize "C"
+
+%function SystemInitialize(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign _modelSS = ""
+
+%<SLibInsertAsyncTaskInitializeCode(system)>
+%<SLibWriteMachineInitialize()>
+/* InitializeConditions for RateTransition: '<Root>/Rate Transition' */
+cjyyyt0pe2y.a22yl5arfg = dexojrsdjj.RateTransition_InitialCondition;
+%assign   SystemInitialize_open_fxgka2mnesn_28_1 = ""
+%openfile SystemInitialize_open_fxgka2mnesn_28_1
+
+/* SystemInitialize for Atomic SubSystem: '<Root>/Control System' */
+%closefile SystemInitialize_open_fxgka2mnesn_28_1
+
+%assign    SystemInitialize_body_fxgka2mnesn_28_1 = ""
+%openfile  SystemInitialize_body_fxgka2mnesn_28_1
+
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[25], "SystemInitialize",0)
+%if SLibCG_SystemFcnArgAccessed("pm32whusy4",25,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCGIRGenReusableSysCall("pm32whusy4", ["%<_modelSS>", "&ntrh2fpvwnc.fxgka2mnesn", "&cjyyyt0pe2y.fxgka2mnesn", "&dexojrsdjj.fxgka2mnesn"], 25, 0, 4, 0, 4, 28)>\
+
+
+%endif
+%closefile SystemInitialize_body_fxgka2mnesn_28_1
+
+%assign    SystemInitialize_close_fxgka2mnesn_28_1 = ""
+%openfile  SystemInitialize_close_fxgka2mnesn_28_1
+
+/* End of SystemInitialize for SubSystem: '<Root>/Control System' */
+%closefile SystemInitialize_close_fxgka2mnesn_28_1
+%<SLibCG_DumpSSCode(SystemInitialize_open_fxgka2mnesn_28_1, SystemInitialize_body_fxgka2mnesn_28_1, SystemInitialize_close_fxgka2mnesn_28_1)>
+
+%<SLibInsertInitPeriodicCStatesFcn(system)>
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedSystemInitializeLocalVars", localVarDecl)>
+%endfunction
+%function SystemInitializeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void SystemInitialize(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(5, 2, fcnProtoType)>
+%endfunction

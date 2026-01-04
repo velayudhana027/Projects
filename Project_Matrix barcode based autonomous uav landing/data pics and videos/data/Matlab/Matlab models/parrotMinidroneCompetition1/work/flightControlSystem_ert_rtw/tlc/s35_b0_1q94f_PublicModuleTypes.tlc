@@ -1,0 +1,28 @@
+%implements s35_b0_1q94f_PublicModuleTypes "C"
+
+%function PublicModuleTypes(block) Output
+
+#ifndef struct_tag_BlgwLpgj2bjudmbmVKWwDE
+#define struct_tag_BlgwLpgj2bjudmbmVKWwDE
+struct tag_BlgwLpgj2bjudmbmVKWwDE
+{
+    uint32_T f1[8];
+};
+#endif /* struct_tag_BlgwLpgj2bjudmbmVKWwDE */
+#ifndef typedef_ew5pe0am14
+#define typedef_ew5pe0am14
+typedef struct tag_BlgwLpgj2bjudmbmVKWwDE ew5pe0am14;
+#endif /* typedef_ew5pe0am14 */
+#ifndef struct_tag_ka0xmCFxNA495MDHzPTiFE
+#define struct_tag_ka0xmCFxNA495MDHzPTiFE
+struct tag_ka0xmCFxNA495MDHzPTiFE
+{
+    int32_T isInitialized;
+    ew5pe0am14 inputVarSize;
+};
+#endif /* struct_tag_ka0xmCFxNA495MDHzPTiFE */
+#ifndef typedef_dsyo2g3gzj
+#define typedef_dsyo2g3gzj
+typedef struct tag_ka0xmCFxNA495MDHzPTiFE dsyo2g3gzj;
+#endif /* typedef_dsyo2g3gzj */
+%endfunction

@@ -1,0 +1,176 @@
+%implements s35_b0_1q94f_4_Start "C"
+
+%function Start(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign _modelSS = ""
+
+/* Start for Enabled SubSystem: '<S267>/Enabled Subsystem' */
+localDW->bmsybdcoxe = false;
+/* End of Start for SubSystem: '<S267>/Enabled Subsystem' */
+
+%assign   Start_open_auyrlkczqpj_25_70 = ""
+%openfile Start_open_auyrlkczqpj_25_70
+
+/* Start for Enabled SubSystem: '<S332>/Enabled Subsystem' */
+%closefile Start_open_auyrlkczqpj_25_70
+
+%assign    Start_body_auyrlkczqpj_25_70 = ""
+%openfile  Start_body_auyrlkczqpj_25_70
+
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[17], "Start",0)
+%if SLibCG_SystemFcnArgAccessed("fpupjmvf3c",17,0)
+%<SLibCG_AccessArg(4 ,1, 0)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("fpupjmvf3c",17,1)
+%<SLibCG_AccessArg(4 ,1, 1)>
+%endif
+
+%<SLibCGIRGenReusableSysCall("fpupjmvf3c", ["%<::tSimStruct>", "&localDW->auyrlkczqpj"], 17, 0, 0, 0, 0, 25)>\
+
+
+%endif
+%closefile Start_body_auyrlkczqpj_25_70
+
+%assign    Start_close_auyrlkczqpj_25_70 = ""
+%openfile  Start_close_auyrlkczqpj_25_70
+
+/* End of Start for SubSystem: '<S332>/Enabled Subsystem' */
+%closefile Start_close_auyrlkczqpj_25_70
+%<SLibCG_DumpSSCode(Start_open_auyrlkczqpj_25_70, Start_body_auyrlkczqpj_25_70, Start_close_auyrlkczqpj_25_70)>
+
+
+%assign   Start_open_boxx2sxddf_25_84 = ""
+%openfile Start_open_boxx2sxddf_25_84
+
+/* Start for Enabled SubSystem: '<S386>/Enabled Subsystem' */
+%closefile Start_open_boxx2sxddf_25_84
+
+%assign    Start_body_boxx2sxddf_25_84 = ""
+%openfile  Start_body_boxx2sxddf_25_84
+
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[17], "Start",0)
+%if SLibCG_SystemFcnArgAccessed("fpupjmvf3c",17,0)
+%<SLibCG_AccessArg(4 ,1, 0)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("fpupjmvf3c",17,1)
+%<SLibCG_AccessArg(4 ,1, 1)>
+%endif
+
+%<SLibCGIRGenReusableSysCall("fpupjmvf3c", ["%<::tSimStruct>", "&localDW->boxx2sxddf"], 17, 1, 0, 0, 0, 25)>\
+
+
+%endif
+%closefile Start_body_boxx2sxddf_25_84
+
+%assign    Start_close_boxx2sxddf_25_84 = ""
+%openfile  Start_close_boxx2sxddf_25_84
+
+/* End of Start for SubSystem: '<S386>/Enabled Subsystem' */
+%closefile Start_close_boxx2sxddf_25_84
+%<SLibCG_DumpSSCode(Start_open_boxx2sxddf_25_84, Start_body_boxx2sxddf_25_84, Start_close_boxx2sxddf_25_84)>
+
+
+/* Start for Enabled SubSystem: '<S470>/Enabled Subsystem' */
+localDW->pg0c4rhf4s = false;
+/* End of Start for SubSystem: '<S470>/Enabled Subsystem' */
+
+/* Start for Enabled SubSystem: '<S463>/MeasurementUpdate' */
+localDW->a1wkwaye0m = false;
+/* End of Start for SubSystem: '<S463>/MeasurementUpdate' */
+
+%assign   Start_open_ieoyjrjufk_25_315 = ""
+%openfile Start_open_ieoyjrjufk_25_315
+
+/* Start for Enabled SubSystem: '<S379>/MeasurementUpdate' */
+%closefile Start_open_ieoyjrjufk_25_315
+
+%assign    Start_body_ieoyjrjufk_25_315 = ""
+%openfile  Start_body_ieoyjrjufk_25_315
+
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[16], "Start",0)
+%if SLibCG_SystemFcnArgAccessed("kdg55a5vgp",16,0)
+%<SLibCG_AccessArg(4 ,1, 0)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("kdg55a5vgp",16,1)
+%<SLibCG_AccessArg(4 ,1, 1)>
+%endif
+
+%<SLibCGIRGenReusableSysCall("kdg55a5vgp", ["%<::tSimStruct>", "&localDW->ieoyjrjufk"], 16, 1, 0, 0, 0, 25)>\
+
+
+%endif
+%closefile Start_body_ieoyjrjufk_25_315
+
+%assign    Start_close_ieoyjrjufk_25_315 = ""
+%openfile  Start_close_ieoyjrjufk_25_315
+
+/* End of Start for SubSystem: '<S379>/MeasurementUpdate' */
+%closefile Start_close_ieoyjrjufk_25_315
+%<SLibCG_DumpSSCode(Start_open_ieoyjrjufk_25_315, Start_body_ieoyjrjufk_25_315, Start_close_ieoyjrjufk_25_315)>
+
+
+%assign   Start_open_ftjpp1i1nwt_25_326 = ""
+%openfile Start_open_ftjpp1i1nwt_25_326
+
+/* Start for Enabled SubSystem: '<S325>/MeasurementUpdate' */
+%closefile Start_open_ftjpp1i1nwt_25_326
+
+%assign    Start_body_ftjpp1i1nwt_25_326 = ""
+%openfile  Start_body_ftjpp1i1nwt_25_326
+
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[16], "Start",0)
+%if SLibCG_SystemFcnArgAccessed("kdg55a5vgp",16,0)
+%<SLibCG_AccessArg(4 ,1, 0)>
+%endif
+%if SLibCG_SystemFcnArgAccessed("kdg55a5vgp",16,1)
+%<SLibCG_AccessArg(4 ,1, 1)>
+%endif
+
+%<SLibCGIRGenReusableSysCall("kdg55a5vgp", ["%<::tSimStruct>", "&localDW->ftjpp1i1nwt"], 16, 0, 0, 0, 0, 25)>\
+
+
+%endif
+%closefile Start_body_ftjpp1i1nwt_25_326
+
+%assign    Start_close_ftjpp1i1nwt_25_326 = ""
+%openfile  Start_close_ftjpp1i1nwt_25_326
+
+/* End of Start for SubSystem: '<S325>/MeasurementUpdate' */
+%closefile Start_close_ftjpp1i1nwt_25_326
+%<SLibCG_DumpSSCode(Start_open_ftjpp1i1nwt_25_326, Start_body_ftjpp1i1nwt_25_326, Start_close_ftjpp1i1nwt_25_326)>
+
+
+/* Start for Enabled SubSystem: '<S261>/MeasurementUpdate' */
+localDW->pqnbafajkv = false;
+/* End of Start for SubSystem: '<S261>/MeasurementUpdate' */
+%closefile cfgTxt
+%<cfgTxt>
+%assign rtmArgSys = ::CompiledModel.System[::CompiledModel.System[::CompiledModel.RTWCGModules.RTWCGModule[4].CGSystemIdx].NonInlinedParentSystemIdx]
+%if SysFcnArgNeeded("Start", rtmArgSys.Interface.RTMArgDef, rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Start"))
+%<SLibCG_AccessArg(4, 1, 0)>
+%endif
+%if SLibCG_ArgAccessed(4, 1, 0)
+%<SLibAccessArg(rtmArgSys.Interface.RTMArgDef, "Start", rtmArgSys.CurrentTID, FcnSysModuleIsRateGrouping(rtmArgSys, "Start"))>
+%endif
+%if (IsModelReferenceBaseSys(rtmArgSys) && (IsModelRefScalableBuild() || GenerateClassInterface)) ||...
+(GenerateClassInterface && SLibIsMultiInstanceServer(rtmArgSys))
+%<SLibCG_UndoAccessArg(4, 1, 0)>
+%endif
+%endfunction
+%function StartFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void dwrvz3trvf(\
+%assign comma = ""
+%if SLibCG_ArgAccessed(4, 1, 0)
+%<comma>%<::tSimStructType> * const %<::tSimStruct>\
+%assign comma = ", "
+%<SLibUpdateSymbolForFunction("dwrvz3trvf", SLibGetFcnDefinitionRTMSymbolName(), TLC_FALSE)>\
+%endif
+%<comma>b4hzi5kh0b *localDW\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(4, 1, fcnProtoType)>
+%endfunction

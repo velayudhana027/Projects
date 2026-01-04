@@ -1,0 +1,28 @@
+%implements s35_b0_1q94f_Functions "C"
+
+%function ohwbwu44sd_Fcn0(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+MW_Build_RGB(&varargin_1[0], &varargout_1[0], &varargout_2[0], &varargout_3[0]);
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void ohwbwu44sd(\
+%assign comma = ""
+%<comma>const uint8_T varargin_1[38400]\
+%assign comma = ", "
+%<comma>uint8_T varargout_1[19200]\
+%assign comma = ", "
+%<comma>uint8_T varargout_2[19200]\
+%assign comma = ", "
+%<comma>uint8_T varargout_3[19200]\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(5, 0, fcnProtoType)>
+%return fcnBuff
+%endfunction
+

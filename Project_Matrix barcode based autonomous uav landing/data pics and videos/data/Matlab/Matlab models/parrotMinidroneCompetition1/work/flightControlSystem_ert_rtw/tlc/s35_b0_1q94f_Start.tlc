@@ -1,0 +1,80 @@
+%implements s35_b0_1q94f_Start "C"
+
+%function Start(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign _modelSS = ""
+
+%assign   SetupRuntimeResources_open_fxgka2mnesn_28_1 = ""
+%openfile SetupRuntimeResources_open_fxgka2mnesn_28_1
+
+/* SetupRuntimeResources for Atomic SubSystem: '<Root>/Control System' */
+%closefile SetupRuntimeResources_open_fxgka2mnesn_28_1
+
+%assign    SetupRuntimeResources_body_fxgka2mnesn_28_1 = ""
+%openfile  SetupRuntimeResources_body_fxgka2mnesn_28_1
+
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[25], "SetupRuntimeResources",0)
+%if SLibCG_SystemFcnArgAccessed("kelbv3f0o2",25,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCGIRGenReusableSysCall("kelbv3f0o2", ["%<_modelSS>", "&ntrh2fpvwnc.fxgka2mnesn", "&cjyyyt0pe2y.fxgka2mnesn"], 25, 0, 2, 0, 0, 28)>\
+
+
+%endif
+%closefile SetupRuntimeResources_body_fxgka2mnesn_28_1
+
+%assign    SetupRuntimeResources_close_fxgka2mnesn_28_1 = ""
+%openfile  SetupRuntimeResources_close_fxgka2mnesn_28_1
+
+/* End of SetupRuntimeResources for SubSystem: '<Root>/Control System' */
+%closefile SetupRuntimeResources_close_fxgka2mnesn_28_1
+%<SLibCG_DumpSSCode(SetupRuntimeResources_open_fxgka2mnesn_28_1, SetupRuntimeResources_body_fxgka2mnesn_28_1, SetupRuntimeResources_close_fxgka2mnesn_28_1)>
+
+
+%assign   Start_open_fxgka2mnesn_28_1 = ""
+%openfile Start_open_fxgka2mnesn_28_1
+
+/* Start for Atomic SubSystem: '<Root>/Control System' */
+%closefile Start_open_fxgka2mnesn_28_1
+
+%assign    Start_body_fxgka2mnesn_28_1 = ""
+%openfile  Start_body_fxgka2mnesn_28_1
+
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[25], "Start",0)
+%if SLibCG_SystemFcnArgAccessed("dwrvz3trvf",25,0)
+%assign _modelSS = RTMGetModelSSFromIR()
+%endif
+
+%<SLibCGIRGenReusableSysCall("dwrvz3trvf", ["%<_modelSS>", "&cjyyyt0pe2y.fxgka2mnesn"], 25, 0, 0, 0, 0, 28)>\
+
+
+%endif
+%closefile Start_body_fxgka2mnesn_28_1
+
+%assign    Start_close_fxgka2mnesn_28_1 = ""
+%openfile  Start_close_fxgka2mnesn_28_1
+
+/* End of Start for SubSystem: '<Root>/Control System' */
+%closefile Start_close_fxgka2mnesn_28_1
+%<SLibCG_DumpSSCode(Start_open_fxgka2mnesn_28_1, Start_body_fxgka2mnesn_28_1, Start_close_fxgka2mnesn_28_1)>
+
+
+/* Start for Atomic SubSystem: '<Root>/Image Processing System' */
+/* Start for MATLABSystem: '<S2>/PARROT Image Conversion' */
+cjyyyt0pe2y.ojzwywsqra = true;
+cjyyyt0pe2y.adkargetc2.isInitialized = 1;
+/* End of Start for SubSystem: '<Root>/Image Processing System' */
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function StartFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Start(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(5, 1, fcnProtoType)>
+%endfunction
