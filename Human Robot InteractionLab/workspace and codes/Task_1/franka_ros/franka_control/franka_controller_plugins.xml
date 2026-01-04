@@ -1,0 +1,10 @@
+<library path="lib/libfranka_state_controller">
+  <class name="franka_control/FrankaStateController" type="franka_control::FrankaStateController" base_class_type="controller_interface::ControllerBase">
+    <description>A controller that publishes the complete robot state</description>
+  </class>
+    <class name="franka_control/CartVelTeleop" type="franka_control::CartVelTeleop" base_class_type="controller_interface::ControllerBase">
+    <description>
+      A controller that executes given velocities
+    </description>
+  </class>
+</library>

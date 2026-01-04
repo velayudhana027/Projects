@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<launch>
+  <arg name="robot_ip" default="192.168.1.101" />
+  <arg name="load_gripper" default="true" />
+  <include file="$(find franka_control)/launch/franka_control.launch" >
+    <arg name="robot_ip" value="$(arg robot_ip)" />
+    <arg name="load_gripper" value="$(arg load_gripper)" />
+  </include>
+
+  
+  <rosparam command="load" file="$(find franka_control)/config/cartesian_velocity_controller.yaml" />
+  
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen"  args="cart_vel_teleop"/> 
+  
+  <arg name="node_start_delay" default="1.0"/>
+  <node name="robot_limits" pkg="franka_control" type="robot_limits.py" output="screen" launch-prefix="bash -c 'sleep $(arg node_start_delay); $0 $@' "/>
+  
+  <!--<node name="calculate_velocity_node" pkg="franka_example_controllers" type="admittance_control.py" respawn="false" output="screen" required="true" /> 
+  
+  <node name="monitor_node" pkg="franka_example_controllers" type="force_torque_monitor_in_work.py" respawn="false" output="screen" required="true" />-->
+   
+</launch>

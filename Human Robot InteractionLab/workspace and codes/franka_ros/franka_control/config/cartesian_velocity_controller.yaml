@@ -1,0 +1,3 @@
+cart_vel_teleop:
+    type: franka_control/CartVelTeleop
+    arm_id: panda

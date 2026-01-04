@@ -1,0 +1,5 @@
+<launch>
+    <param name="/max_sensor_force" type="int" value="700" />    
+    <node name="fsr_sensor" pkg="ros_intro" type="FSR_sensor.py"/>    
+    <node name="force_mapping" pkg="ros_intro" type="mapping_node.py"/>    
+</launch>

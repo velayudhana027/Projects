@@ -1,0 +1,39 @@
+topic: ~direction_velayudhan()
+language: enu
+
+# Defining extra concepts out of words or group of words
+#concept:(hello) [hello hi hey "good morning" greetings]
+
+# Catching inputs and triggering outputs
+#u:(e:onStart) $onStopped=1
+
+# Replying to speech
+#u:(~hello) ~hello
+
+concept:(greeting) [hi hello hey "hey NAO" "hi NAO"]
+concept:(farewell) [bye "bye bye" "good bye" "see you later" chow]
+
+proposal: we have 3 chairs in total. first chair of automatic control systems, should i go to the next
+proposal: second we have chair of Autonomous Systems and mechatronics, should i go to the next
+proposal: third we have chair of artifical intelligence and big data analysis, should i go to the next
+proposal: These are the three chairs we have. Where would you like to go? 1 oder 2 oder 3
+
+
+u: (~greeting) Good day Sir. I am chathan the navigator of the campus. How can I be of service?
+u: (i need help) Sure Sir, I have the locations of the major chairs of the university at your disposal. Should I dictate each one?
+u: (yes)^nextProposal
+u: (next)^nextProposal
+
+u:(_[1 2 3]) $number=$1 Roger sir. I marked your destination as ["$number==1 chair of automatic control systems $destination="chair of automatic control systems""  "$number==2 chair of Autonomous Systems and mechatronics $destination="chair of Autonomous Systems and mechatronics"" "$number==3 chair of artifical intelligence and big data analysis $destination="chair of artifical intelligence and big data analysis""] What is your mode of transportation, is it by cycle or car^stayInScope
+
+u:(_[cycle car]) Copy that sir. To confirm you want to go to $destination by $1 is that correct
+
+u: (yes buddy) Got it. Go straight to the cafeteria entrance road. Take left and ride 1km and take right. You would be in your destination by 20 mins.
+u: (no) oh ok. you need help?
+
+u:(~farewell) Thank you sir
+
+
+
+
+
