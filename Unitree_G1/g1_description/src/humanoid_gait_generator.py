@@ -32,56 +32,63 @@ class HumanoidGaitGenerator(Node):
         now = self.get_clock().now().to_msg()
         dt = 0.02
 
-        # --- 1. ODometry LOGIC (Movement through space) ---
+        # --- 1. ODOMETRY LOGIC ---
         self.th += self.vth * dt
         self.x += self.vx * math.cos(self.th) * dt
         self.y += self.vx * math.sin(self.th) * dt
 
-        # Publish the transform from odom to the robot base (pelvis)
         t = TransformStamped()
         t.header.stamp = now
         t.header.frame_id = 'odom'
         t.child_frame_id = 'pelvis'
         t.transform.translation.x = self.x
         t.transform.translation.y = self.y
-        t.transform.translation.z = 0.78  # Standing height
+        # Dynamic height: slightly bob up and down while walking
+        bobbing = abs(math.cos(self.phase * 2.0)) * 0.02 if abs(self.vx) > 0.01 else 0.0
+        t.transform.translation.z = 0.78 - bobbing 
+        
         t.transform.rotation.z = math.sin(self.th / 2.0)
         t.transform.rotation.w = math.cos(self.th / 2.0)
         self.br.sendTransform(t)
 
-        # --- 2. GAIT LOGIC (Moving the limbs) ---
+        # --- 2. GAIT LOGIC ---
         js = JointState()
         js.header.stamp = now
+        
+        # List EVERY joint in your URDF to prevent flickering
         js.name = [
-            'left_hip_pitch_joint', 'right_hip_pitch_joint',
-            'left_knee_joint', 'right_knee_joint',
-            'left_ankle_pitch_joint', 'right_ankle_pitch_joint',
-            'left_shoulder_pitch_joint', 'right_shoulder_pitch_joint',
-            'left_elbow_joint', 'right_elbow_joint'
+            'left_hip_pitch_joint', 'left_hip_roll_joint', 'left_hip_yaw_joint',
+            'left_knee_joint', 'left_ankle_pitch_joint', 'left_ankle_roll_joint',
+            'right_hip_pitch_joint', 'right_hip_roll_joint', 'right_hip_yaw_joint',
+            'right_knee_joint', 'right_ankle_pitch_joint', 'right_ankle_roll_joint',
+            'waist_yaw_joint', 'waist_roll_joint', 'waist_pitch_joint',
+            'left_shoulder_pitch_joint', 'left_shoulder_roll_joint', 'left_shoulder_yaw_joint',
+            'left_elbow_joint', 'left_wrist_roll_joint', 'left_wrist_pitch_joint', 'left_wrist_yaw_joint',
+            'right_shoulder_pitch_joint', 'right_shoulder_roll_joint', 'right_shoulder_yaw_joint',
+            'right_elbow_joint', 'right_wrist_roll_joint', 'right_wrist_pitch_joint', 'right_wrist_yaw_joint'
         ]
+        
+        # Initialize all 29 joints to 0.0
+        js.position = [0.0] * len(js.name)
 
         if abs(self.vx) > 0.01 or abs(self.vth) > 0.01:
-            # Synchronized phase: Faster command = faster animation
             self.phase += (abs(self.vx) * 6.0 + 2.0) * dt
+            s = math.sin(self.phase)
+            c = math.cos(self.phase)
             
-            swing = math.sin(self.phase) * 0.45
-            knee = (math.sin(self.phase - 1.5) + 1.1) * 0.5
-            
-            js.position = [
-                swing,          # L Hip
-                -swing,         # R Hip
-                knee,           # L Knee
-                (math.sin(self.phase + 1.5) + 1.1) * 0.5, # R Knee
-                -swing * 0.3,   # L Ankle
-                swing * 0.3,    # R Ankle
-                -swing * 0.8,   # L Shoulder (Opposite of L Hip)
-                swing * 0.8,    # R Shoulder
-                0.4, 0.4        # Elbows
-            ]
+            # Update specific indices for walking (Mapping based on list above)
+            js.position[0] = s * 0.45      # left_hip_pitch
+            js.position[6] = -s * 0.45     # right_hip_pitch
+            js.position[3] = (math.sin(self.phase - 1.5) + 1.1) * 0.5 # left_knee
+            js.position[9] = (math.sin(self.phase + 1.5) + 1.1) * 0.5 # right_knee
+            js.position[15] = -s * 0.5     # left_shoulder_pitch
+            js.position[22] = s * 0.5      # right_shoulder_pitch
+            js.position[18] = 0.4          # left_elbow
+            js.position[25] = 0.4          # right_elbow
         else:
-            # Reset to idle pose when stopped
-            js.position = [0.0] * len(js.name)
-            self.phase = 0.0
+            # Smoothly decay the phase so it doesn't snap
+            self.phase *= 0.9
+            if self.phase < 0.01: self.phase = 0.0
 
         self.joint_pub.publish(js)
 
