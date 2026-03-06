@@ -1,60 +1,56 @@
-# Unitree G1 & Robotics Development Guide
+# SYNOPSIS OF THE REPOSITORY
 
-This repository in ownership of **Mr. Velayudhan Aravindakshan** contains the implementation, simulation setup, and troubleshooting workflows for the Unitree G1 humanoid and general ROS 2 robotic systems.
+**REPOSITORY OBJECTIVE** - Humanoid(Unitree G1) possession of Humanlike Behaviour for Successful Manipulation Of Objects with the latest LTS Software Stack For Deployment
 
-## Table of Contents
+**REPOSITORY STRATEGY** - COMBINED USE OF REINFORCEMENT LEARNING AND BEYONDMIMIC (FOR HUMANLIKE GAIT FORMULATION AND FORMATION)
 
-* [Unitree G1 and Robotics Setup](#unitree-g1-and-robotics-setup)
-* [Walking Strategy and Control](#walking-strategy-and-control)
-* [Simulation Environments](#simulation-environments)
-* [Troubleshooting and System Fixes](#troubleshooting-and-system-fixes)
+The repository is in the sole discretion of Mr. Velayudhan Aravindakshan and are welcome to code reviews, updates and modification or suggestions from developers. 
 
----
+***Disclaimer : I am not planning to reinvent the wheel but make the wheel more efficient***
 
-## Unitree G1 and Robotics Setup
+## APPROACH STRATEGY and PLAN
+**ALL VIRTUAL FIRST** approach with the verification of RL and beyondmimic simulation completion(subject to hardware bottlenecks) and hardware deployment and testing(subject to hardware availability)
 
-### Core Dependencies
-To process robot models and coordinate transforms, the following dependencies are required:
-* **robot_state_publisher**: Reads the URDF file and outputs the coordinate transform (TF).
-* **joint_state_publisher_gui**: Used to visualize the model and manually move the limbs.
-* **Package Requirements**: Requires `ros-jazzy-xacro`, `ros-jazzy-robot-state-publisher`, and `ros-jazzy-joint-state-publisher-gui`.
+### 1. DIGITAL TWIN (STATUS - DONE)
+Building the robot (Unitree G1) with the use of existing STL files.
 
-### URDF Visualization
-To visualize the robot in RViz 2 manually:
-1. Navigate to the folder containing the URDF.
-2. Run the joint state publisher: `ros2 run joint_state_publisher_gui joint_state_publisher_gui <path-to-urdf>`.
-3. In a second terminal, run the robot state publisher using xacro to process the description: `ros2 run robot_state_publisher robot_state_publisher --ros-args -p robot_description:="$(xacro <path-to-urdf>)"`.
-4. Launch **RViz 2** and set the fixed frame to the **base_link**.
+### 2. RVIZ VISUALIZATION (NON PHYSICS TRANSFORMATION AND MESSAGE EXCHANGE) (STATUS - DONE)
+Visualization of the robot with correct mesh rendering from the urdf file
 
----
+### 3. RVIZ LOCOMOTION (STATUS - DONE)
+Robot movement on the virtual world (without physics) using joystick model control
 
-## Walking Strategy and Control
-* **Walking Logic**: The robot walks when its root link moves relative to a global fixed frame like `odom` or `map`.
-* **Virtual Odometry**: A node listens for velocity commands, calculates the new position, and broadcasts the TF transform.
-* **Teleoperation**: Movement can be controlled via keyboard using:
-  `ros2 run teleop_twist_keyboard teleop_twist_keyboard`.
+### 4. MuJoCo VISUALIZATION - PHYSICS ENGINE (STATUS - DONE)
+Robot visualization with the robot in the capacity to self balance and stand.
 
----
+### 5. MuJoCo LOCOMOTION (STATUS - IN PROGRESS)
+Robot movement with the influence of world factors like gravity, friction etc and by using joystick model control
 
-## Simulation Environments
+### 6. MuJoCo CONTROL (STATUS - PLANNED)
+Robot manipulation with the use of camera for pick and place of an object
 
-### Unity Integration
-Unity is used for handling physics, gravity, and collisions.
-* **Communication**: Requires the `Unity-ROS 2 Bridge` and `ROS-TCP-Connector`.
-* **TCP Endpoint**: Run the TCP connector node to allow ROS 2 communication: `ros2 run ros_tcp_endpoint default_server_endpoint --ros-args -p ROS_IP:=127.0.0.1`.
-* **URDF Import**: Assets and meshes are imported into Unity using the **URDF Importer** package.
+### 7. REINFORCEMENT LEARNING and BEYONDMIMIC (STATUS - PLANNED)
+Robot gait mirroring with respect to real human gait movement by training with the use of RL and BEYONDMIMIC
 
-### MuJoCo Integration
-Due to system limitations with Unity, MuJoCo is utilized for Python-based physics simulation.
-* **Virtual Environment**: Setup using `python3 -m venv gl-env` and install `mujoco` and `numpy`.
-* **Compatibility**: The URDF must be modified for MuJoCo by adding the XML version header and defining the mesh directory.
-* **Loading**: Models can be viewed using:
-  `python3 -m mujoco.viewer --mjcf=<path-to-urdf>`.
+### 8. INTEGRATION (STATUS - PLANNED)
+Encapsulation of above modular functionalities to make the robot<br><br>
+***a. Move in an virtual environment with object avoidance based on command<br>
+b. Traverse from a point A to point B and to point C <br>
+c. Object manipulation to be done in point B.***
 
----
+### 9. DATA COLLECTION AND ANALYSIS (STATUS - PLANNED)
+Taking out the relevant data to be compared when deployed with real hardware
 
-## Troubleshooting and System Fixes
-* **Drive Mounting**: If a forced restart causes an external drive volume to become non-parsable, fix the NTFS partition using: `sudo ntfsfix -d /dev/sda1`.
-* **Virtual Box**: To enable screen resizing, install `build-essential`, `dkms`, and `linux-headers`.
-* **Debugging**: To check for URDF loading faults, use the MuJoCo Python API to import the model directly from the XML path:
-  `python3 -c "import mujoco; mujoco.MjModel.from_xml_path('<path-to-urdf>')"`.
+### 10. HARDWARE DEPLOYMENT AND TESTING (STATUS - ON HOLD)
+Test the package in the real hardware for the testing and date analysis for further improvement
+
+## PACKAGE LIST
+| Package name | Brief |
+| :----: | :----: |
+|unitree_g1_description|meshes, urdf and visual aspects related to the robot|
+|unitree_g1_rviz|Non Physics related simulation of the robot|
+|unitree_g1_mujoco|Physics related simulation of the robot|
+
+
+
+
