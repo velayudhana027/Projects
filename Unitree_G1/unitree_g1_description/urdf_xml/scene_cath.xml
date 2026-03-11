@@ -1,6 +1,6 @@
 <mujoco model="Unitree G1 29DOF">
     <include file="g1_29dof.xml" pos="0 0 0"/>
-    <option timestep="0.0005" iterations="50" tolerance="1e-10" solver="Newton" jacobian="sparse" cone="elliptic" gravity="0 0 -9.81"/>
+    <option timestep="0.005" iterations="50" solver="PGS" jacobian="sparse" gravity="0 0 -9.81"/>
     <visual>
         <map force="0.001" /> <!-- Adjust this to make red lines longer/shorter -->
         <global offwidth="800" offheight="800" />
