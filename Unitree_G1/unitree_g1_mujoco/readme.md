@@ -139,3 +139,5 @@ Training Methodology
 
 THE POLICY TESTING IS BEEN DONE WITH FINETUNING AND IS IN PROGRESS WITH THE CODE AT *unitree_g1_mujoco/src/mjlab_standing.py*
 
+The tuning has to done and current status is attached below
+![Alt Text](shots/RL_Test.gif)
