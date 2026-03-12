@@ -137,7 +137,7 @@ Training Methodology
 
     Monitoring: All metrics were logged via Weights & Biases (wandb) to track real-time progression of reward components and termination statistics.
 
-THE POLICY TESTING IS BEEN DONE WITH FINETUNING AND IS IN PROGRESS WITH THE CODE AT *unitree_g1_mujoco/src/mjlab_standing.py*
+THE POLICY TESTING IS BEEN DONE WITH localhost(http://127.0.0.1:8080/) browser view<br>
+ *python3 unitree_g1_mujoco/src/mjlab_policy_load.py*<br>
 
-The tuning has to done and current status is attached below
-![Alt Text](shots/RL_Test.gif)
+![Alt Text](shots/mjlab_viewer.gif)
